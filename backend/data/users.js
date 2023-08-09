@@ -1,0 +1,78 @@
+import bcrypt from 'bcryptjs';
+
+const users = [
+	{
+		lastName: 'User',
+		firstName: 'Admin',
+		emailSignIn: 'admin@email.com',
+		emailSecondary: '',
+		password: bcrypt.hashSync('123456', 10),
+		secretHint: '',
+		cellPhoneNumber: '',
+		defaultShippingAddress: {
+			fullName: '',
+			address: '',
+			city: '',
+			state: '',
+			postalCode: '',
+			country: '',
+		},
+		isAdmin: true,
+	},
+	{
+		lastName: 'Doe',
+		firstName: 'John',
+		emailSignIn: 'john@email.com',
+		emailSecondary: 'jdoe@email.com',
+		password: bcrypt.hashSync('123456', 10),
+		secretHint: '',
+		cellPhoneNumber: '',
+		defaultShippingAddress: {
+			fullName: '',
+			address: '',
+			city: '',
+			state: '',
+			postalCode: '',
+			country: '',
+		},
+		isAdmin: false,
+	},
+	{
+		lastName: 'Doe',
+		firstName: 'Jane',
+		emailSignIn: 'jane@email.com',
+		emailSecondary: 'janedoe@email.com',
+		password: bcrypt.hashSync('123456', 10),
+		secretHint: '',
+		cellPhoneNumber: '',
+		defaultShippingAddress: {
+			fullName: '',
+			address: '',
+			city: '',
+			state: '',
+			postalCode: '',
+			country: '',
+		},
+		isAdmin: false,
+	},
+	{
+		lastName: 'Forter',
+		firstName: 'Frank',
+		emailSignIn: 'hotdog@email.com',
+		emailSecondary: 'ballpark@email.com',
+		password: bcrypt.hashSync('123456', 10),
+		secretHint: '',
+		cellPhoneNumber: '',
+		defaultShippingAddress: {
+			fullName: '',
+			address: '',
+			city: '',
+			state: '',
+			postalCode: '',
+			country: '',
+		},
+		isAdmin: false,
+	},
+];
+
+export default users;

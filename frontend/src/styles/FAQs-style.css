@@ -1,0 +1,193 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	/*background:#3E0F73;    */
+
+	font-family: neue-haas-grotesk-text, sans-serif;
+}
+
+a:link {
+	text-decoration: none;
+	color: var(--navText);
+	text-shadow: var(--shadowText);
+}
+a:visited {
+	text-decoration: none;
+	color: var(--navText);
+	text-shadow: var(--shadowText);
+}
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+	text-shadow: var(--shadowText);
+}
+a:active {
+	text-decoration: none;
+	text-shadow: var(--shadowText);
+}
+
+#search-wrapper {
+	position: relative;
+	margin: 0 10%;
+}
+
+#search-bar {
+	width: 50%;
+	height: 32px;
+	border-radius: 50px;
+	border: 1px solid #eaeaea;
+	padding: 5px 10px;
+	font-size: 12px;
+	outline: none;
+	margin: auto;
+	display: flex;
+}
+#search-wrapper {
+	position: relative;
+}
+#search-wrapper #clear button {
+	cursor: pointer;
+
+	/*position: absolute;
+	
+	top: 16px;
+	right: 20px;*/
+	display: flex;
+	border: none;
+	border-radius: 50px;
+	outline: none;
+
+	padding: 10px 20px;
+	margin: 10px auto;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+}
+
+#clear button {
+	background-color: darkturquoise;
+	color: #fff;
+}
+
+#clear button:hover {
+	background-color: darkcyan;
+}
+#clear button:active {
+	transform: scale(0.98);
+}
+input[type='text'] {
+	padding: 6px;
+	margin-top: 8px;
+	font-size: 17px;
+	border: none;
+}
+
+.faq-wrapper {
+	text-align: left;
+	padding: 0 10%;
+	margin: 0 10%;
+}
+
+.error-message {
+	margin: 0 10%;
+	font-family: alex-brush, sans-serif;
+	font-size: 30px;
+	color: darkturquoise;
+}
+
+.faq-wrapper {
+	/*max-width: 600px;*/
+	margin: 0 auto;
+	min-width: 100%;
+}
+.faq {
+	background-color: #fff;
+	border: 1px solid #9fa4a8;
+	border-radius: 10px;
+	margin: 20px 0;
+	padding: 10px 30px;
+	position: relative;
+	overflow: hidden;
+	transition: 0.3 ease;
+}
+.faq.active {
+	background-color: #fff;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+.faq.active::before,
+.faq.active::after {
+	content: '\f075';
+	font-family: 'Font Awesome 5 Free';
+	color: #2ecc71;
+	font-size: 7rem;
+	position: absolute;
+	opacity: 0.2;
+	top: 20px;
+	left: 20px;
+	z-index: 0;
+}
+.faq.active::before {
+	color: #3498db;
+	top: -10px;
+	left: -30px;
+	transform: rotateY(180deg);
+}
+.faq-title {
+	margin: 0 35px 0 0;
+	color: darkturquoise;
+
+	text-align: left;
+	font-style: italic;
+	font-family: alex-brush, sans-serif;
+	font-weight: 200;
+	font-size: 30px;
+	text-shadow: 1px 1px 1px black;
+}
+
+.faq-text {
+	display: none;
+	margin: 0 30px 0 0;
+	color: darkblue;
+
+	text-align: left;
+	font-weight: 200;
+	font-family: Muli, sans-serif;
+	font-size: 15px;
+}
+
+.faq.active .faq-text {
+	display: block;
+}
+.faq-toggle {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	padding: 0;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	height: 30px;
+	width: 30px;
+}
+.faq-toggle:focus {
+	outline: 0;
+}
+
+.faq-toggle .fa-times {
+	display: none;
+}
+.faq.active .faq-toggle .fa-times {
+	display: block;
+}
+.faq.active .faq-toggle .fa-chevron-down {
+	display: none;
+}

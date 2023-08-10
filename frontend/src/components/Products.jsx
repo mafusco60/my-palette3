@@ -8,6 +8,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Products = () => {
+	const {
+		data: product,
+		isLoading,
+		error,
+	} = useGetProductsQuery({
+		// selectFromResult: ({ data }) => data?.products,
+	});
 	//const { data: products } = useGetProductsQuery();
 	const [products, setProducts] = useState([]);
 
@@ -19,14 +26,14 @@ const Products = () => {
 
 		fetchProducts();
 	}, []);
-	console.log('products', products);
+	console.log('data-Products for galleryscreen', product);
 
 	return (
 		<>
-			{/* isLoading ? (
-			<Loader />) : error ? ( 
+			isLoading ? (
+			<Loader />) : error ? (
 			<Message variant='danger'>{error?.data?.message || error.error}</Message>)
-			: ( */}
+			: (
 			{products.map((product) => (
 				// <Container className='gallery-container'>
 
@@ -53,7 +60,7 @@ const Products = () => {
 				</Card>
 				// </Container>
 			))}{' '}
-			{/* ) */}
+			)
 		</>
 	);
 };

@@ -11,7 +11,7 @@ import faqRoutes from './routes/faqRoutes.js';
 //import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 8000;
 
 connectDB();
 const app = express();

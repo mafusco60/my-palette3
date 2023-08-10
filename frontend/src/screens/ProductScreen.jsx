@@ -2,25 +2,24 @@ import React from 'react';
 import ProductOrderCard from '../components/ProductOrderCard';
 import { Card, Row, Col, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useState } from 'react';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const ProductScreen = () => {
-	//const { data: product } = useGetProductDetailsQuery();
+	const { data: product } = useGetProductDetailsQuery();
 	const { id: productId } = useParams();
-	const [product, setProduct] = useState([]);
+	// const [product, setProduct] = useState({});
 
-	useEffect(() => {
-		const fetchProduct = async () => {
-			const { data } = await axios.get(`/api/products/${productId}`);
-			setProduct(data);
-		};
+	// useEffect(() => {
+	// 	const fetchProduct = async () => {
+	// 		const { data } = await axios.get(`/api/products/${productId}`);
+	// 		setProduct(data);
+	// 	};
 
-		fetchProduct();
-	}, [productId]);
+	// 	fetchProduct();
+	// }, [productId]);
 	console.log('product', product);
 
 	const [isEnlarged, setIsEnlarged] = useState(false);

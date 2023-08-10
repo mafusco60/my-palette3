@@ -43,7 +43,7 @@ const UserListScreen = () => {
 					{users.map((user) => (
 						<tr key={user._id}>
 							<td>{user._id}</td>
-							<td>{`${user.firstName}' '${user.lastName}`}</td>
+							<td>{`${user.firstName} ${user.lastName}`}</td>
 							<td>
 								<a href={`mailto:${user.emailSignIn}`}>{user.emailSignIn}</a>
 							</td>

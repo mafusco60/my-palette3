@@ -9,46 +9,54 @@ import React from 'react';
 
 const ImageCarousel = () => {
 	console.log('ImageCarousel');
-	//const { data: products } = useGetProductsQuery();
-	const [products, setProducts] = useState([]);
+	const { data: products, isLoading, err } = useGetProductsQuery();
+	//const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const { data } = await axios.get('/api/products');
-			setProducts(data);
-		};
+	// useEffect(() => {
+	// 	const fetchProducts = async () => {
+	// 		const { data } = await axios.get('/api/products');
+	// 		setProducts(data);
+	// 	};
 
-		fetchProducts();
-	}, []);
-	// console.log('products', products);
+	// 	fetchProducts();
+	// }, []);
+	console.log('data image carousel', { data: products, isLoading, err });
 
 	return (
 		<>
-			<>
-				<Carousel
-					pause='hover'
-					fade='true'
-					indicators='true'
-					controls='true'
-					className={'carousel-container carousel-fade'}
-				>
-					{products.map((product) => (
-						<Carousel.Item key={product._id}>
-							<Link to={`/products/${product._id}`}>
-								<Image
-									src={product.image}
-									alt={product.name}
-									className={
-										product.portrait
-											? 'carousel-image'
-											: 'carousel-image-landscape'
-									}
-								/>
-							</Link>
-						</Carousel.Item>
-					))}
-				</Carousel>
-			</>
+			{isLoading ? (
+				<Loader />
+			) : err ? (
+				<div>{err?.data?.message || err.error}</div>
+			) : (
+				<>
+					<>
+						<Carousel
+							pause='hover'
+							fade='true'
+							indicators='true'
+							controls='true'
+							className={'carousel-container carousel-fade'}
+						>
+							{products.map((product) => (
+								<Carousel.Item key={product._id}>
+									<Link to={`/products/${product._id}`}>
+										<Image
+											src={product.image}
+											alt={product.name}
+											className={
+												product.portrait
+													? 'carousel-image'
+													: 'carousel-image-landscape'
+											}
+										/>
+									</Link>
+								</Carousel.Item>
+							))}
+						</Carousel>
+					</>
+				</>
+			)}
 		</>
 	);
 };

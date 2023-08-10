@@ -1,8 +1,8 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import FAQs from '../models/faqsModel.js';
 
-// @desc    Fetch all products
-// @route   GET /api/products
+// @desc    Fetch all FAQs
+// @route   GET /api/faqs
 // @access  Public
 const getFaqs = asyncHandler(async (req, res) => {
 	const faqs = await FAQs.find({});
@@ -14,8 +14,8 @@ const getFaqs = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc    Fetch single product
-// @route   GET /api/products/:id
+// @desc    Fetch single FAQ
+// @route   GET /api/faqs/:id
 // @access  Public
 const getFAQDetails = asyncHandler(async (req, res) => {
 	const faq = await Product.findById(req.params.id);
@@ -27,8 +27,8 @@ const getFAQDetails = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc    Create a product
-// @route   POST /api/products
+// @desc    Create a FAQ
+// @route   POST /api/faqs
 // @access  Private/Admin
 const createFAQ = asyncHandler(async (req, res) => {
 	const faq = new FAQs({
@@ -41,8 +41,8 @@ const createFAQ = asyncHandler(async (req, res) => {
 	res.status(201).json(createdFAQ);
 });
 
-// @desc    Update a product
-// @route   PUT /api/products/:id
+// @desc    Update a FAQ
+// @route   PUT /api/faqs/:id
 // @access  Private/Admin
 const updateFAQ = asyncHandler(async (req, res) => {
 	const { buzzWords, question, answer } = req.body;
@@ -62,8 +62,8 @@ const updateFAQ = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc    Delete a product
-// @route   DELETE /api/products/:id
+// @desc    Delete a FAQ
+// @route   DELETE /api/faqs/:id
 // @access  Private/Admin
 const deleteFAQ = asyncHandler(async (req, res) => {
 	const faq = await FAQs.findById(req.params.id);

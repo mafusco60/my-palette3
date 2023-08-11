@@ -4,36 +4,36 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Loader from './Loader';
 import Message from './Message';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 
 const Products = () => {
 	const {
-		data: product,
+		data: products,
 		isLoading,
-		error,
+		err,
 	} = useGetProductsQuery({
-		// selectFromResult: ({ data }) => data?.products,
+		selectFromResult: ({ data }) => data?.products,
 	});
+
 	//const { data: products } = useGetProductsQuery();
-	const [products, setProducts] = useState([]);
+	//const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const { data } = await axios.get('/api/products');
-			setProducts(data);
-		};
+	// useEffect(() => {
+	// 	const fetchProducts = async () => {
+	// 		const { data } = await axios.get('/api/products');
+	// 		setProducts(data);
+	// 	};
 
-		fetchProducts();
-	}, []);
-	console.log('data-Products for galleryscreen', product);
+	// 	fetchProducts();
+	// }, []);
+	console.log('data- Products for GalleryScreen', products);
 
 	return (
 		<>
 			isLoading ? (
 			<Loader />) : error ? (
-			<Message variant='danger'>{error?.data?.message || error.error}</Message>)
-			: (
+			<Message variant='danger'>{err?.data?.message || err.error}</Message>) : (
 			{products.map((product) => (
 				// <Container className='gallery-container'>
 

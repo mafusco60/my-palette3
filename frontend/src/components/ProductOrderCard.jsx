@@ -15,17 +15,17 @@ import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 
 const ProductOrderCard = () => {
 	console.log('ProductOrderCard');
-	//const { data: product } = useGetProductDetailsQuery();
-	const [product, setProduct] = useState([]);
+	const { data: product, isLoading, err } = useGetProductDetailsQuery();
+	// const [product, setProduct] = useState([]);
 	const { id: productId } = useParams();
-	useEffect(() => {
-		const fetchProduct = async () => {
-			const { data } = await axios.get(`/api/products/${productId}`);
-			setProduct(data);
-		};
+	// useEffect(() => {
+	// 	const fetchProduct = async () => {
+	// 		const { data } = await axios.get(`/api/products/${productId}`);
+	// 		setProduct(data);
+	// 	};
 
-		fetchProduct();
-	}, [productId]);
+	// 	fetchProduct();
+	// }, [productId]);
 	const [qty, setQty] = useState(1);
 
 	const addToCartHandler = () => {

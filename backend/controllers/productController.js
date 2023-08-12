@@ -5,13 +5,27 @@ import Product from '../models/productModel.js';
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
+	// const pageSize = process.env.PAGINATION_LIMIT;
+	// const page = Number(req.query.pageNumber) || 1;
+
+	// const keyword = req.query.keyword
+	// 	? {
+	// 			name: {
+	// 				$regex: req.query.keyword,
+	// 				$options: 'i',
+	// 			},
+	// 	  }
+	// 	: {};
+	// const count = await Product.countDocuments({ ...keyword });
+
+	// const products = await Product.find({ ...keyword })
+	// 	.limit(pageSize)
+	// 	.skip(pageSize * (page - 1));
 	const products = await Product.find({});
-	if (products) {
-		res.status(201).json(products);
-	} else {
-		res.status(404);
-		throw new Error('Resource not found');
-	}
+	res.json({
+		products,
+		// page, pages: Math.ceil(count / pageSize)
+	});
 });
 
 // @desc    Fetch single product
@@ -30,25 +44,40 @@ const getProductDetails = asyncHandler(async (req, res) => {
 // @desc    Create a product
 // @route   POST /api/products
 // @access  Private/Admin
+
 const createProduct = asyncHandler(async (req, res) => {
-	const product = new Product({
-		name: 'Sample name',
-		price: 0,
+	const {
+		name,
+		image,
+		size,
+		medium,
+		description,
+		category,
+		print,
+		price,
+		digital,
+		shippingWeight,
+		portrait,
+		count,
+		top5,
+		buzzWords,
+	} = req.body;
+	const product = await Product.create({
 		user: req.user._id,
-		image: '/images/sample.jpg',
-		size: 'Sample size',
-		medium: 'Sample medium',
-		description: 'Sample Description',
-		numReviews: 0,
-		category: 'Sample category',
-		print: false,
-		price: 0,
-		digital: false,
-		shippingWeight: 1,
-		portrait: true,
-		count: 1,
-		top5: false,
-		buzzWords: 'Sample buzz words',
+		name,
+		image,
+		size,
+		medium,
+		description,
+		category,
+		print,
+		price,
+		digital,
+		shippingWeight,
+		portrait,
+		count,
+		top5,
+		buzzWords,
 	});
 
 	const createdProduct = await product.save();

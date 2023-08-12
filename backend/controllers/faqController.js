@@ -1,10 +1,11 @@
+import { request } from 'express';
 import asyncHandler from '../middleware/asyncHandler.js';
 import FAQs from '../models/faqsModel.js';
 
 // @desc    Fetch all FAQs
 // @route   GET /api/faqs
 // @access  Public
-const getFaqs = asyncHandler(async (req, res) => {
+const getFAQs = asyncHandler(async (req, res) => {
 	const faqs = await FAQs.find({});
 	if (faqs) {
 		res.status(201).json(faqs);
@@ -18,7 +19,7 @@ const getFaqs = asyncHandler(async (req, res) => {
 // @route   GET /api/faqs/:id
 // @access  Public
 const getFAQDetails = asyncHandler(async (req, res) => {
-	const faq = await Product.findById(req.params.id);
+	const faq = await FAQs.findById(req.params.id);
 	if (faq) {
 		return res.status(201).json(faq);
 	} else {
@@ -31,13 +32,15 @@ const getFAQDetails = asyncHandler(async (req, res) => {
 // @route   POST /api/faqs
 // @access  Private/Admin
 const createFAQ = asyncHandler(async (req, res) => {
-	const faq = new FAQs({
-		buzzWords: 'Sample buzz words',
-		question: 'Sample question',
-		answer: 'Sample answer',
+	const { buzzWords, question, answer } = req.body;
+
+	const faq = await FAQs.create({
+		buzzWords,
+		question,
+		answer,
 	});
 
-	const createdFAQ = await product.save();
+	const createdFAQ = await faq.save();
 	res.status(201).json(createdFAQ);
 });
 
@@ -58,7 +61,7 @@ const updateFAQ = asyncHandler(async (req, res) => {
 		res.json(updatedFAQ);
 	} else {
 		res.status(404);
-		throw new Error('Product not found');
+		throw new Error('FAQ not found');
 	}
 });
 
@@ -77,4 +80,4 @@ const deleteFAQ = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getFaqs, getFAQDetails, createFAQ, updateFAQ, deleteFAQ };
+export { getFAQs, getFAQDetails, createFAQ, updateFAQ, deleteFAQ };

@@ -95,8 +95,17 @@
 	display: inline-block;
 	margin-left: 4px;
 }
-/* Titles & Labels ************************************/
+/* Titles & Labels & Messages************************************/
+.message-bar {
+	background-color: var(--mainBackgroundMiddle);
+	font-family: var(--mainFont);
+	color: var(--darkText);
 
+	text-align: center;
+	font-size: 20px;
+	font-style: oblique;
+	margin: 25px auto;
+}
 .label-dk-txt {
 	font-family: var(--mainFont);
 	color: var(--darkTextAlt);

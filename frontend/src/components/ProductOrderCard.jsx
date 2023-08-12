@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Row,
 	Col,
@@ -15,17 +14,14 @@ import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 
 const ProductOrderCard = () => {
 	console.log('ProductOrderCard');
-	const { data: product, isLoading, err } = useGetProductDetailsQuery();
-	// const [product, setProduct] = useState([]);
 	const { id: productId } = useParams();
-	// useEffect(() => {
-	// 	const fetchProduct = async () => {
-	// 		const { data } = await axios.get(`/api/products/${productId}`);
-	// 		setProduct(data);
-	// 	};
+	const {
+		data: product,
+		refetch,
+		isLoading,
+		err,
+	} = useGetProductDetailsQuery(productId);
 
-	// 	fetchProduct();
-	// }, [productId]);
 	const [qty, setQty] = useState(1);
 
 	const addToCartHandler = () => {

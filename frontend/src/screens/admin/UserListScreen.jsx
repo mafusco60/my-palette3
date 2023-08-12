@@ -6,24 +6,24 @@ import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import {
-//useDeleteUserMutation,
-//   useGetUsersQuery,
-// } from '../../slices/usersApiSlice';
-//import { toast } from 'react-toastify';
+import {
+	useDeleteUserMutation,
+	useGetUsersQuery,
+} from '../../slices/usersApiSlice';
+import { toast } from 'react-toastify';
 
 const UserListScreen = () => {
-	//const { data: users, refetch, isLoading, error } = useGetUsersQuery();
-	const [users, setUsers] = useState([]);
+	const { data: users, refetch, isLoading, error } = useGetUsersQuery();
+	// const [users, setUsers] = useState([]);
 
-	useEffect(() => {
-		const fetchUsers = async () => {
-			const { data } = await axios.get('/api/users');
-			setUsers(data);
-		};
+	// useEffect(() => {
+	// 	const fetchUsers = async () => {
+	// 		const { data } = await axios.get('/api/users');
+	// 		setUsers(data);
+	// 	};
 
-		fetchUsers();
-	}, []);
+	// 	fetchUsers();
+	// }, []);
 
 	return (
 		<>

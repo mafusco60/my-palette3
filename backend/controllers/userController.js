@@ -1,26 +1,29 @@
-import React from 'react';
 import asyncHandler from '../middleware/asyncHandler.js';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
-
+import bcrypt from 'bcryptjs';
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
 	const { emailSignIn, password } = req.body;
-
+	console.log(emailSignIn, password);
 	const user = await User.findOne({ emailSignIn });
 
-	if (user && (await user.matchPassword(password))) {
-		// generateToken(res, user._id);
-		console.log('user._id: ', user._id);
+	// if (user && (await user.matchPassword(password))) {
+	// 	generateToken(res, user._id);
+
+	if (user && (await bcrypt.compare(password, user.password))) {
+		generateToken(res, user._id);
 
 		res.json({
-			_id: user._id,
-			lastName: user.lastName,
-			firstName: user.firstName,
+			// _id: user._id,
+			// lastName: user.lastName,
+			// firstName: user.firstName,
 			emailSignIn: user.emailSignIn,
-			isAdmin: user.isAdmin,
+			password: user.password,
+			// emailSecondary: user.emailSecondary,
+			// isAdmin: user.isAdmin,
 		});
 	} else {
 		res.status(401);
@@ -32,7 +35,22 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-	const { lastName, firstName, emailSignIn, password } = req.body;
+	const {
+		lastName,
+		firstName,
+		emailSignIn,
+		password,
+		emailSecondary,
+		secretHint,
+		cellPhoneNumber,
+		defaultShippingAddress,
+		fullName,
+		address,
+		city,
+		state,
+		postalCode,
+		country,
+	} = req.body;
 
 	const userExists = await User.findOne({ emailSignIn });
 
@@ -45,8 +63,8 @@ const registerUser = asyncHandler(async (req, res) => {
 		lastName,
 		firstName,
 		emailSignIn,
-		emailSecondary,
 		password,
+		emailSecondary,
 		secretHint,
 		cellPhoneNumber,
 		defaultShippingAddress,
@@ -56,18 +74,17 @@ const registerUser = asyncHandler(async (req, res) => {
 		state,
 		postalCode,
 		country,
-		isAdmin,
 	});
 
 	if (user) {
-		// generateToken(res, user._id);
+		generateToken(res, user._id);
 		console.log('user._id: ', user._id);
 
 		res.status(201).json({
 			_id: user._id,
 			lastName: user.lastName,
 			firstName: user.firstName,
-			email: user.email,
+			emailSignIn: user.email,
 			isAdmin: user.isAdmin,
 		});
 	} else {
@@ -135,21 +152,21 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 		const updatedUser = await user.save();
 
 		res.json({
-			_id: user._id,
-			lastName: user.lastName,
-			firstName: user.firstName,
-			emailSignIn: user.emailSignIn,
-			emailSecondary: user.emailSecondary,
-			secretHint: user.secretHint,
-			cellPhoneNumber: user.cellPhoneNumber,
-			defaultShippingAddress: user.defaultShippingAddress,
-			fullName: user.fullName,
-			address: user.address,
-			city: user.city,
-			state: user.state,
-			postalCode: user.postalCode,
-			country: user.country,
-			isAdmin: user.isAdmin,
+			_id: updatedUser._id,
+			lastName: updatedUser.lastName,
+			firstName: updatedUser.firstName,
+			emailSignIn: updatedUser.emailSignIn,
+			emailSecondary: updatedUser.emailSecondary,
+			secretHint: updatedUser.secretHint,
+			cellPhoneNumber: updatedUser.cellPhoneNumber,
+			defaultShippingAddress: updatedUser.defaultShippingAddress,
+			fullName: updatedUser.fullName,
+			address: updatedUser.address,
+			city: updatedUser.city,
+			state: updatedUser.state,
+			postalCode: updatedUser.postalCode,
+			country: updatedUser.country,
+			isAdmin: updatedUser.isAdmin,
 		});
 	} else {
 		res.status(404);
@@ -205,7 +222,20 @@ const updateUser = asyncHandler(async (req, res) => {
 
 	if (user) {
 		user.lastName = req.body.lastName || user.lastName;
+		user.firstName = req.body.firstName || user.firstName;
 		user.emailSignIn = req.body.emailSignIn || user.emailSignIn;
+		user.emailSecondary = req.body.emailSecondary || user.emailSecondary;
+		user.secretHint = req.body.secretHint || user.secretHint;
+		user.cellPhoneNumber = req.body.cellPhoneNumber || user.cellPhoneNumber;
+		user.defaultShippingAddress =
+			req.body.defaultShippingAddress || user.defaultShippingAddress;
+		user.fullName = req.body.fullName || user.fullName;
+		user.address = req.body.address || user.address;
+		user.city = req.body.city || user.city;
+		user.state = req.body.state || user.state;
+		user.postalCode = req.body.postalCode || user.postalCode;
+		user.country = req.body.country || user.country;
+
 		user.isAdmin = Boolean(req.body.isAdmin);
 
 		const updatedUser = await user.save();
@@ -213,7 +243,19 @@ const updateUser = asyncHandler(async (req, res) => {
 		res.json({
 			_id: updatedUser._id,
 			lastName: updatedUser.lastName,
+			firstName: updatedUser.firstName,
 			emailSignIn: updatedUser.emailSignIn,
+			emailSecondary: updatedUser.emailSecondary,
+			secretHint: updatedUser.secretHint,
+			cellPhoneNumber: updatedUser.cellPhoneNumber,
+			defaultShippingAddress: updatedUser.defaultShippingAddress,
+			fullName: updatedUser.fullName,
+			address: updatedUser.address,
+			city: updatedUser.city,
+			state: updatedUser.state,
+			postalCode: updatedUser.postalCode,
+			country: updatedUser.country,
+
 			isAdmin: updatedUser.isAdmin,
 		});
 	} else {

@@ -34,8 +34,8 @@ const CartScreen = () => {
 
 	return (
 		<Row>
-			<Col md={8}>
-				<h1 style={{ marginBottom: '20px' }}>Shopping Cart</h1>
+			<Col md={12}>
+				<h1 className='screen-title'>Shopping Cart</h1>
 				{cartItems.length === 0 ? (
 					<Message>
 						Your cart is empty <Link to='/'>Go Back</Link>
@@ -82,32 +82,36 @@ const CartScreen = () => {
 					</ListGroup>
 				)}
 			</Col>
-			<Col md={4}>
-				<Card>
-					<ListGroup variant='flush'>
-						<ListGroup.Item>
-							<h2>
-								Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-								items
-							</h2>
-							$
-							{cartItems
-								.reduce((acc, item) => acc + item.qty * item.price, 0)
-								.toFixed(2)}
-						</ListGroup.Item>
-						<ListGroup.Item>
-							<Button
-								type='button'
-								className='btn-block'
-								disabled={cartItems.length === 0}
-								onClick={checkoutHandler}
-							>
-								Proceed To Checkout
-							</Button>
-						</ListGroup.Item>
-					</ListGroup>
-				</Card>
-			</Col>
+			{cartItems.length > 0 ? (
+				<Col md={4}>
+					<Card>
+						<ListGroup variant='flush'>
+							<ListGroup.Item>
+								<h2>
+									Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
+									) items
+								</h2>
+								$
+								{cartItems
+									.reduce((acc, item) => acc + item.qty * item.price, 0)
+									.toFixed(2)}
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Button
+									type='button'
+									className='btn-block'
+									disabled={cartItems.length === 0}
+									onClick={checkoutHandler}
+								>
+									Proceed To Checkout
+								</Button>
+							</ListGroup.Item>
+						</ListGroup>
+					</Card>
+				</Col>
+			) : (
+				''
+			)}
 		</Row>
 	);
 };

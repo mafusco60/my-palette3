@@ -8,18 +8,18 @@ import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 import ToggleIcon, { isOpen } from './ToggleIcon';
 
 const FAQs = () => {
-	const [FAQs, setFAQs] = useState([]);
+	// const [FAQs, setFAQs] = useState([]);
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const { data } = await axios.get('/api/faqs');
-			setFAQs(data);
-		};
+	// useEffect(() => {
+	// 	const fetchProducts = async () => {
+	// 		const { data } = await axios.get('/api/faqs');
+	// 		setFAQs(data);
+	// 	};
 
-		fetchProducts();
-	}, []);
+	// 	fetchProducts();
+	// }, []);
 
-	// const { data: FAQs } = useGetFAQsQuery();
+	const { data: FAQs } = useGetFAQsQuery();
 
 	return (
 		<>

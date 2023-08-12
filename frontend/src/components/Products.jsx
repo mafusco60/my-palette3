@@ -4,36 +4,27 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Loader from './Loader';
 import Message from './Message';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
+	const { pageNumber, keyword } = useParams();
+
 	const {
 		data: products,
 		isLoading,
 		err,
 	} = useGetProductsQuery({
-		selectFromResult: ({ data }) => data?.products,
+		keyword,
+		pageNumber,
 	});
 
-	//const { data: products } = useGetProductsQuery();
-	//const [products, setProducts] = useState([]);
-
-	// useEffect(() => {
-	// 	const fetchProducts = async () => {
-	// 		const { data } = await axios.get('/api/products');
-	// 		setProducts(data);
-	// 	};
-
-	// 	fetchProducts();
-	// }, []);
 	console.log('data- Products for GalleryScreen', products);
 
 	return (
 		<>
-			isLoading ? (
+			{/* isLoading ? (
 			<Loader />) : error ? (
-			<Message variant='danger'>{err?.data?.message || err.error}</Message>) : (
+			<Message variant='danger'>{err?.data?.message || err.error}</Message>) : ( */}
 			{products.map((product) => (
 				// <Container className='gallery-container'>
 
@@ -60,7 +51,7 @@ const Products = () => {
 				</Card>
 				// </Container>
 			))}{' '}
-			)
+			{/* ) */}
 		</>
 	);
 };

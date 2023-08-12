@@ -6,16 +6,15 @@ import checkObjectId from '../middleware/checkObjectId.js';
 
 const router = express.Router();
 import {
-	getFaqs,
+	getFAQs,
 	getFAQDetails,
 	createFAQ,
 	updateFAQ,
 	deleteFAQ,
 } from '../controllers/faqController.js';
 
-//router.get('/top', getTopProducts);
-router.route('/').get(getFaqs).post(protect, admin, createFAQ);
-//router.route('/:id/reviews').post(protect, checkObjectId, createProductReview);
+router.route('/').get(getFAQs).post(protect, admin, createFAQ);
+
 router
 	.route('/:id')
 	.get(checkObjectId, getFAQDetails)

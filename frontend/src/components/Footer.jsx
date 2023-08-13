@@ -5,11 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 import React from 'react';
 
 const Footer = () => {
-	try {
-		console.log('Footer');
-	} catch (error) {
-		console.log('error Footer');
-	}
 	const currentYear = new Date().getFullYear();
 	return (
 		<>

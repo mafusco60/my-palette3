@@ -10,9 +10,6 @@ const authUser = asyncHandler(async (req, res) => {
 	console.log(emailSignIn, password);
 	const user = await User.findOne({ emailSignIn });
 
-	// if (user && (await user.matchPassword(password))) {
-	// 	generateToken(res, user._id);
-
 	if (user && (await user.matchPassword(password))) {
 		generateToken(res, user._id);
 
@@ -243,12 +240,23 @@ const updateUser = asyncHandler(async (req, res) => {
 		user.cellPhoneNumber = req.body.cellPhoneNumber || user.cellPhoneNumber;
 		user.defaultShippingAddress =
 			req.body.defaultShippingAddress || user.defaultShippingAddress;
-		user.fullName = req.body.fullName || user.fullName;
-		user.address = req.body.address || user.address;
-		user.city = req.body.city || user.city;
-		user.state = req.body.state || user.state;
-		user.postalCode = req.body.postalCode || user.postalCode;
-		user.country = req.body.country || user.country;
+		user.defaultShippingAddress.fullName =
+			req.body.defaultShippingAddress.fullName ||
+			user.defaultShippingAddress.fullName;
+		user.defaultShippingAddress.address =
+			req.body.defaultShippingAddress.address ||
+			user.defaultShippingAddress.address;
+		user.defaultShippingAddress.city =
+			req.body.defaultShippingAddress.city || user.defaultShippingAddress.city;
+		user.defaultShippingAddress.state =
+			req.body.defaultShippingAddress.state ||
+			user.defaultShippingAddress.state;
+		user.defaultShippingAddress.postalCode =
+			req.body.defaultShippingAddress.postalCode ||
+			user.defaultShippingAddress.postalCode;
+		user.defaultShippingAddress.country =
+			req.body.defaultShippingAddress.country ||
+			user.defaultShippingAddress.country;
 
 		user.isAdmin = Boolean(req.body.isAdmin);
 
@@ -263,12 +271,12 @@ const updateUser = asyncHandler(async (req, res) => {
 			secretHint: updatedUser.secretHint,
 			cellPhoneNumber: updatedUser.cellPhoneNumber,
 			defaultShippingAddress: updatedUser.defaultShippingAddress,
-			fullName: updatedUser.fullName,
-			address: updatedUser.address,
-			city: updatedUser.city,
-			state: updatedUser.state,
-			postalCode: updatedUser.postalCode,
-			country: updatedUser.country,
+			fullName: updatedUser.defaultShippingAddress.fullName,
+			address: updatedUser.defaultShippingAddress.address,
+			city: updatedUser.defaultShippingAddress.city,
+			state: updatedUser.defaultShippingAddress.state,
+			postalCode: updatedUser.defaultShippingAddress.postalCode,
+			country: updatedUser.defaultShippingAddress.country,
 
 			isAdmin: updatedUser.isAdmin,
 		});

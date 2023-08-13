@@ -230,29 +230,42 @@
 	justify-content: center;
 } */
 
-/*******Single Product************************************/
-.single-product-card {
+/*******Single Product / Shopping Cart ************************************/
+.closerX {
 	position: relative;
+	top: 10px;
+	right: 10px;
+	color: var(--darkText);
+	text-align: right;
+	margin: 15px;
+	font-size: 30px;
+}
+
+.single-product-card {
 	width: 1000px;
-	min-height: 900px;
+	min-height: 650px;
 	padding-bottom: 20px;
-	margin: 0 auto;
 	margin: 75px auto 10px;
+	padding-bottom: 50px;
 	background-color: var(--mainBackgroundBottom);
 	border-radius: 10px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 	padding-top: 20px;
 }
-.single-product-card-landscape {
-	width: 900px;
-	min-height: 900px;
-	padding-bottom: 20px;
-	margin: 0 auto;
-	margin: 75px auto 10px;
-	background-color: var(--mainBackgroundBottom);
+
+.image-tiny {
+	width: 50px;
+	height: 75px;
 	border-radius: 10px;
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-	padding-top: 20px;
+	margin: 20px;
+	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+}
+.image-small {
+	width: 150px;
+	height: 200px;
+	border-radius: 10px;
+	margin: 20px;
+	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
 }
 .image-med {
 	width: 400px;
@@ -270,10 +283,13 @@
 	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
 }
 .image-land-med {
-	min-width: 650px;
-	min-height: 550px;
+	/* position: relative;
+	top: 30px; */
+	min-width: 400px;
+	max-width: 500px;
+	/* min-height: 550px; */
 	border-radius: 10px;
-	margin: 20px;
+	margin: 40px;
 	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
 }
 .image-land-lg {
@@ -282,6 +298,13 @@
 	border-radius: 10px;
 	margin: 20px;
 	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+}
+.desc-rel-position {
+	margin-bottom: 50px;
+	/* top: 30px; */
+}
+.single-product-title {
+	margin: 50px auto;
 }
 .product-order-card {
 	display: block;

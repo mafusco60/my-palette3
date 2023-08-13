@@ -1,15 +1,15 @@
 import React from 'react';
 import ProductOrderCard from '../components/ProductOrderCard';
-import { Card, Row, Col, Image, Button } from 'react-bootstrap';
+import { Card, Row, Col, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { faTimes } from 'react-icons/fa';
+import express from 'express';
 
-const ProductScreen = () => {
+const Product = () => {
 	const { id: productId } = useParams();
 	const {
 		data: product,
@@ -17,6 +17,7 @@ const ProductScreen = () => {
 		error,
 	} = useGetProductDetailsQuery(productId);
 
+	console.log('product', productId, product);
 	const [isEnlarged, setIsEnlarged] = useState(false);
 
 	const clickHandler = () => {
@@ -32,12 +33,10 @@ const ProductScreen = () => {
 			) : (
 				<Card className='single-product-card'>
 					<Card.Body>
-						<Col>
-							<Row>
-								<h2 className='label-dk-txt single-product-title'>
-									{product.name}
-								</h2>
-								<Card.Img
+						<Row>
+							<Col>
+								<h2 className='label-dk-txt'>{product.name}</h2>
+								<Image
 									src={product.image}
 									alt={product.name}
 									onClick={clickHandler}
@@ -45,41 +44,22 @@ const ProductScreen = () => {
 										!product.portrait
 											? isEnlarged
 												? 'image-land-lg'
-												: 'image-land-med'
+												: 'image-land'
 											: isEnlarged
 											? 'image-lg'
 											: 'image-med'
 									}
 								/>
-							</Row>
-						</Col>
-						<Col className={isEnlarged ? 'disappear' : 'reappear '}>
-							<ProductOrderCard />
-						</Col>
-						<>
-							<Col>
-								faTimes className=
-								{!isEnlarged ? 'disappear' : 'reappear closerX'}
 							</Col>
-						</>
+						</Row>
 
-						<Card.Text
-							className={
-								!product.portrait
-									? 'desc-dk-txt-alt desc-rel-position'
-									: 'desc-dk-txt-alt'
-							}
-						>
+						<Card.Text className='desc-dk-txt-alt desc-rel-pos'>
 							{product.description}
 						</Card.Text>
 					</Card.Body>
 				</Card>
 			)}
-			<LinkContainer to='/gallery'>
-				<h3 className='label-dk-txt'>Browse the Gallery</h3>
-			</LinkContainer>
 		</>
 	);
 };
-
-export default ProductScreen;
+export default Product;

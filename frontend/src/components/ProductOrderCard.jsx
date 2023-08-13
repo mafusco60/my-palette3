@@ -9,11 +9,12 @@ import {
 } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
+import { addToCart } from '../slices/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const ProductOrderCard = () => {
-	console.log('ProductOrderCard');
+	const dispatch = useDispatch();
 	const { id: productId } = useParams();
 	const {
 		data: product,
@@ -25,13 +26,13 @@ const ProductOrderCard = () => {
 	const [qty, setQty] = useState(1);
 
 	const addToCartHandler = () => {
-		console.log({ ...product, qty });
-		// Message('Item added to cart');
+		dispatch(addToCart({ ...product, qty }));
+		// navigate('/cart');
 	};
 
 	return (
 		<Col md={6}>
-			<Card className='product-order-card'>
+			<Card className='product-order-card fluid'>
 				<ListGroup variant='flush'>
 					<ListGroup.Item className='rounded'>
 						<h3 className='text-center'>{product.name}</h3>

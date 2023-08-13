@@ -158,17 +158,17 @@
 }
 /* Ratings *************************************/
 .rating span {
-  margin: 0.1rem;
+	margin: 0.1rem;
 }
 
 .rating svg {
-  color: #f8e825;
+	color: #f8e825;
 }
 
 .rating-text {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding-left: 0.5rem;
+	font-size: 0.8rem;
+	font-weight: 600;
+	padding-left: 0.5rem;
 }
 
 /* Gallery***************************/
@@ -436,9 +436,9 @@
 	margin-bottom: 0px;
 	font-style: italic;
 	background-color: var(--lightBackground);
-	font-family: var(--fancyFont);
+	font-family: var(--mainFont);
 	font-weight: 200;
-	font-size: 40px;
+	font-size: 30px;
 }
 .faq-x {
 	position: relative;

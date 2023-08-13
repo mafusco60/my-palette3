@@ -18,37 +18,38 @@ const Products = () => {
 
 	return (
 		<>
-			isLoading ? (
-			<Loader />) : (error) ? (
-			<Message variant='danger'>{error?.data?.message || error.error}</Message>)
-			: (
-			{products.map((product) => (
-				// <Container className='gallery-container'>
+			{isLoading ? (
+				<Loader />
+			) : error ? (
+				<div>{error?.data?.message || error.error}</div>
+			) : (
+				products.map((product) => (
+					// <Container className='gallery-container'>
 
-				<Card className='gallery-card' key={product._id}>
-					<>
-						<LinkContainer to={`/products/${product._id}`}>
-							<Card.Img
-								className={
-									product.portrait
-										? 'gallery-card-image'
-										: 'gallery-card-image-landscape'
-								}
-								src={product.image}
-								alt={product.name}
-							/>
-						</LinkContainer>
+					<Card className='gallery-card' key={product._id}>
+						<>
+							<LinkContainer to={`/products/${product._id}`}>
+								<Card.Img
+									className={
+										product.portrait
+											? 'gallery-card-image'
+											: 'gallery-card-image-landscape'
+									}
+									src={product.image}
+									alt={product.name}
+								/>
+							</LinkContainer>
 
-						<Card.Body className='gallery-card-text'>
-							<Card.Title className=''>{product.name}</Card.Title>
-							<Card.Text className=''>{product.medium}</Card.Text>
-							<Card.Text className=''>${product.price}</Card.Text>
-						</Card.Body>
-					</>
-				</Card>
-				// </Container>
-			))}
-			)
+							<Card.Body className='gallery-card-text'>
+								<Card.Title className=''>{product.name}</Card.Title>
+								<Card.Text className=''>{product.medium}</Card.Text>
+								<Card.Text className=''>${product.price}</Card.Text>
+							</Card.Body>
+						</>
+					</Card>
+					// </Container>
+				))
+			)}
 		</>
 	);
 };

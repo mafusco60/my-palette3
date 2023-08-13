@@ -1,32 +1,32 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from 'react-dom';
-import React from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import { Provider } from 'react-redux';
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
-import store from './store.js';
-import reportWebVitals from './reportWebVitals';
-import { createRoot } from 'react-dom/client';
-import './styles/bootstrap.custom.css';
-import './styles/index.css';
-import App from './App';
-import { createBrowserRouter, Route, RouterProvider } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import CartScreen from './screens/CartScreen';
-import ProductScreen from './screens/ProductScreen';
-import GalleryScreen from './screens/GalleryScreen';
-import ContactScreen from './screens/ContactScreen';
-import FAQScreen from './screens/FAQScreen';
-import UserListScreen from './screens/admin/UserListScreen.jsx';
-import AboutScreen from './screens/AboutScreen';
-import ServicesScreen from './screens/ServicesScreen';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import ReactDOM from 'react-dom/client'
+import React from 'react'
+import { HelmetProvider } from 'react-helmet-async'
+import { Provider } from 'react-redux'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+import store from './store.js'
+import reportWebVitals from './reportWebVitals'
+import { createRoot } from 'react-dom/client'
+import './styles/bootstrap.custom.css'
+import './styles/index.css'
+import App from './App'
+import { createBrowserRouter, Route, RouterProvider } from 'react-router-dom'
+import HomeScreen from './screens/HomeScreen'
+import LoginScreen from './screens/LoginScreen'
+import CartScreen from './screens/CartScreen'
+import ProductScreen from './screens/ProductScreen'
+import GalleryScreen from './screens/GalleryScreen'
+import ContactScreen from './screens/ContactScreen'
+import FAQScreen from './screens/FAQScreen'
+import UserListScreen from './screens/admin/UserListScreen.jsx'
+import AboutScreen from './screens/AboutScreen'
+import ServicesScreen from './screens/ServicesScreen'
 
-import { createRoutesFromElements } from 'react-router-dom';
+import { createRoutesFromElements } from 'react-router-dom'
 try {
-	console.log('index.js');
+	console.log('index.js')
 } catch (error) {
-	console.log('error index.js');
+	console.log('error index.js')
 }
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -40,12 +40,14 @@ const router = createBrowserRouter(
 			<Route path='/services/' element={<ServicesScreen />} />
 			<Route path='/contact/' element={<ContactScreen />} />
 			<Route path='/products/:id' element={<ProductScreen />} />
+
 			{<Route path='/userlist/' element={<UserListScreen />} />}
 		</Route>
 	)
-);
+)
 
-createRoot(document.getElementById('root')).render(
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
 	<React.StrictMode>
 		<HelmetProvider>
 			<Provider store={store}>
@@ -55,6 +57,6 @@ createRoot(document.getElementById('root')).render(
 			</Provider>
 		</HelmetProvider>
 	</React.StrictMode>
-);
+)
 
-reportWebVitals();
+reportWebVitals()

@@ -24,6 +24,18 @@ const UserListScreen = () => {
 
 	// 	fetchUsers();
 	// }, []);
+	const [deleteUser] = useDeleteUserMutation();
+
+	const deleteHandler = async (id) => {
+		if (window.confirm('Are you sure')) {
+			try {
+				await deleteUser(id);
+				refetch();
+			} catch (err) {
+				toast.error(err?.data?.message || err.error);
+			}
+		}
+	};
 
 	return (
 		<>

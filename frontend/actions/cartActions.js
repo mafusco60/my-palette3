@@ -10,7 +10,7 @@ const addToCart = (id, qty) => async (dispatch, getState) => {
 			name: data.name,
 			image: data.image[0],
 			price: data.price,
-			availQty: data.availQty,
+			count: data.count,
 		},
 	});
 	localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));

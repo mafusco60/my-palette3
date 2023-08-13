@@ -38,6 +38,13 @@ export const userApiSlice = apiSlice.injectEndpoints({
 			providesTags: ['User'],
 			keepUnusedDataFor: 5,
 		}),
+		getUserByEmail: builder.query({
+			query: () => ({
+				url: USERS_URL,
+			}),
+			providesTags: ['User'],
+			keepUnusedDataFor: 5,
+		}),
 		deleteUser: builder.mutation({
 			query: (userId) => ({
 				url: `${USERS_URL}/${userId}`,

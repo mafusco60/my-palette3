@@ -38,7 +38,7 @@ const CartScreen = () => {
 				<h1 className='screen-title'>Shopping Cart</h1>
 				{cartItems.length === 0 ? (
 					<Message>
-						Your cart is empty <Link to='/'>Go Back</Link>
+						Your cart is empty <Link to='/gallery'> Go Shopping </Link>
 					</Message>
 				) : (
 					<ListGroup variant='flush'>
@@ -60,7 +60,7 @@ const CartScreen = () => {
 												addToCartHandler(item, Number(e.target.value))
 											}
 										>
-											{[...Array(item.countInStock).keys()].map((x) => (
+											{[...Array(item.count).keys()].map((x) => (
 												<option key={x + 1} value={x + 1}>
 													{x + 1}
 												</option>

@@ -48,9 +48,9 @@ const Header = () => {
 					</LinkContainer>
 
 					<Navbar.Brand>
-						<Link to='/'>
+						<LinkContainer to='/'>
 							<Image className='logo' src='/images/favicon.png' alt='logo' />
-						</Link>
+						</LinkContainer>
 					</Navbar.Brand>
 
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />

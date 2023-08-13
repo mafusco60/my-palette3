@@ -8,13 +8,14 @@ import {
 	getUsers,
 	deleteUser,
 	getUserDetails,
+	getUserByEmail,
 	updateUser,
 } from '../controllers/userController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').post(registerUser).get(getUsers);
+router.route('/').post(registerUser).get(getUsers).get(getUserByEmail);
 router.post('/auth', authUser);
 router.post('/logout', logoutUser);
 router

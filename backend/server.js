@@ -11,17 +11,30 @@ import faqRoutes from './routes/faqRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 
 connectDB();
 const app = express();
+
+app.use((req, res, next) => {
+	// res.header('Access-Control-Allow-Origin', '*'); // Replace * with the allowed origin
+	res.header('Access-Control-Allow-Origin', '*');
+
+	res.header('Access-Control-Allow-Credentials', true);
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept'
+	);
+	next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/products', productRoutes);
-app.use('/api/users', userRoutes); //
+app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/faqs', faqRoutes);
@@ -45,7 +58,7 @@ if (process.env.NODE_ENV === 'production') {
 		res.send('API is running....');
 	});
 }
-console.log(process.env.NODE_ENV);
+
 app.use(notFound);
 app.use(errorHandler);
 

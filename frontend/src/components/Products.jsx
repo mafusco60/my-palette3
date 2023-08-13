@@ -1,30 +1,27 @@
 import React from 'react';
-import { Card, Container, Col, Row } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Loader from './Loader';
 import Message from './Message';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
-import { useParams } from 'react-router-dom';
 
 const Products = () => {
-	const { pageNumber, keyword } = useParams();
-
-	const {
-		data: products,
-		isLoading,
-		err,
-	} = useGetProductsQuery({
-		keyword,
-		pageNumber,
-	});
+	//const { pageNumber, keyword } = useParams()
+	try {
+		console.log('Products Component');
+	} catch (error) {
+		console.log('error Products Component');
+	}
+	const { data: products, isLoading, error } = useGetProductsQuery();
 
 	console.log('data- Products for GalleryScreen', products);
 
 	return (
 		<>
-			{/* isLoading ? (
-			<Loader />) : error ? (
-			<Message variant='danger'>{err?.data?.message || err.error}</Message>) : ( */}
+			isLoading ? (
+			<Loader />) : (error) ? (
+			<Message variant='danger'>{error?.data?.message || error.error}</Message>)
+			: (
 			{products.map((product) => (
 				// <Container className='gallery-container'>
 
@@ -50,8 +47,8 @@ const Products = () => {
 					</>
 				</Card>
 				// </Container>
-			))}{' '}
-			{/* ) */}
+			))}
+			)
 		</>
 	);
 };

@@ -13,21 +13,35 @@ const authUser = asyncHandler(async (req, res) => {
 	// if (user && (await user.matchPassword(password))) {
 	// 	generateToken(res, user._id);
 
-	if (user && (await bcrypt.compare(password, user.password))) {
+	if (user && (await user.matchPassword(password))) {
 		generateToken(res, user._id);
 
 		res.json({
-			// _id: user._id,
-			// lastName: user.lastName,
-			// firstName: user.firstName,
+			_id: user._id,
+			lastName: user.lastName,
+			firstName: user.firstName,
 			emailSignIn: user.emailSignIn,
 			password: user.password,
 			// emailSecondary: user.emailSecondary,
-			// isAdmin: user.isAdmin,
+			isAdmin: user.isAdmin,
 		});
 	} else {
 		res.status(401);
 		throw new Error('Invalid email or password');
+	}
+});
+// @desc    Find a user by email
+// @route   GET /api/users
+// @access  Public
+
+const getUserByEmail = asyncHandler(async (req, res) => {
+	const user = await findOne({ emailSignIn });
+	console.log(user);
+	if (user) {
+		res.json(user);
+	} else {
+		res.status(404);
+		throw new Error('User not found');
 	}
 });
 
@@ -266,6 +280,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
 export {
 	authUser,
+	getUserByEmail,
 	registerUser,
 	logoutUser,
 	getUserProfile,

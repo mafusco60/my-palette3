@@ -1,13 +1,19 @@
-import React from 'react';
-import ImageCarousel from '../components/ImageCarousel';
-import { LinkContainer } from 'react-router-bootstrap';
+import React from 'react'
+import ImageCarousel from '../components/ImageCarousel'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from 'react-router-dom'
+import { Carousel, Image } from 'react-bootstrap'
+import { useGetProductsQuery } from '../slices/productsApiSlice'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const HomeScreen = () => {
 	try {
-		console.log('HomeScreen');
+		console.log('HomeScreen')
 	} catch (error) {
-		console.log('error HomeScreen');
+		console.log('error HomeScreen')
 	}
+
 	return (
 		<>
 			<h1 className='screen-title'>Welcome to Mary Anne's Palette</h1>
@@ -18,7 +24,7 @@ const HomeScreen = () => {
 				<h3 className='label-dk-txt'>Browse the Gallery</h3>
 			</LinkContainer>
 		</>
-	);
-};
+	)
+}
 
-export default HomeScreen;
+export default HomeScreen

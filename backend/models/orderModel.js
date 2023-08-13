@@ -10,7 +10,7 @@ const orderSchema = new mongoose.Schema(
 		orderItems: [
 			{
 				name: { type: String, required: true },
-				availQty: { type: Number, required: true },
+				count: { type: Number, required: true },
 				image: { type: String, required: true },
 				price: { type: Number, required: true },
 				product: {
@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema(
 			},
 		],
 		shippingAddress: {
-			fullName: { type: String, required: true },
+			fullName: { type: String, required: false },
 			address: { type: String, required: true },
 			city: { type: String, required: true },
 			state: { type: String },
@@ -60,7 +60,6 @@ const orderSchema = new mongoose.Schema(
 		},
 		isPaid: {
 			type: Boolean,
-			required: true,
 			default: false,
 		},
 		paidAt: {
@@ -68,7 +67,6 @@ const orderSchema = new mongoose.Schema(
 		},
 		isShipped: {
 			type: Boolean,
-			required: true,
 			default: false,
 		},
 		shipCompany: {
@@ -84,7 +82,6 @@ const orderSchema = new mongoose.Schema(
 
 		isDelivered: {
 			type: Boolean,
-			required: true,
 			default: false,
 		},
 		deliveredAt: {

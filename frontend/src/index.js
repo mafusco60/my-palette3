@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import store from './store.js';
 import reportWebVitals from './reportWebVitals';
-import { createRoot } from 'react-dom/client';
+//import { createRoot } from 'react-dom/client';
 import './styles/bootstrap.custom.css';
 import './styles/index.css';
 import App from './App';
@@ -20,7 +20,7 @@ import ContactScreen from './screens/ContactScreen';
 import FAQScreen from './screens/FAQScreen';
 import UserListScreen from './screens/admin/UserListScreen.jsx';
 import UserEditScreen from './screens/admin/UserEditScreen.jsx';
-import AboutScreen from './screens/AboutScreen';
+import AboutMeScreen from './screens/AboutMeScreen';
 import AboutMeEditScreen from './screens/admin/AboutMeEditScreen.jsx';
 import ServicesScreen from './screens/ServicesScreen';
 
@@ -38,13 +38,13 @@ const router = createBrowserRouter(
 			<Route path='/auth' element={<LoginScreen />} />
 			<Route path='/gallery' element={<GalleryScreen />} />
 			<Route path='/faqs/' element={<FAQScreen />} />
-			<Route path='/about/' element={<AboutScreen />} />
+			<Route path='/aboutme/' element={<AboutMeScreen />} />
 			<Route path='/services/' element={<ServicesScreen />} />
 			<Route path='/contact/' element={<ContactScreen />} />
 			<Route path='/products/:id' element={<ProductScreen />} />
 			<Route path='/admin/userlist/' element={<UserListScreen />} />
-			<Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
-			<Route path='/admin/about/edit' element={<AboutMeEditScreen />} />
+			<Route path='/user/:id/edit' element={<UserEditScreen />} />
+			<Route path='/aboutme/edit' element={<AboutMeEditScreen />} />
 		</Route>
 	)
 );

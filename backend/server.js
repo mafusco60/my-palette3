@@ -9,16 +9,18 @@ import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import faqRoutes from './routes/faqRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import aboutMeRoutes from './routes/aboutMeRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import { BASE_URL } from '../frontend/src/constants.js';
 
 const port = process.env.PORT || 4000;
 
 connectDB();
 const app = express();
 
+/****************put in middleware** */
 app.use((req, res, next) => {
-	// res.header('Access-Control-Allow-Origin', '*'); // Replace * with the allowed origin
-	res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.header('Access-Control-Allow-Origin', BASE_URL);
 
 	res.header('Access-Control-Allow-Credentials', true);
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -28,6 +30,7 @@ app.use((req, res, next) => {
 	);
 	next();
 });
+/**************************************** */
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -38,6 +41,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/faqs', faqRoutes);
+app.use('/api/about', aboutMeRoutes);
 
 app.get('/api/config/paypal', (req, res) =>
 	res.send({ clientId: process.env.PAYPAL_CLIENT_ID })

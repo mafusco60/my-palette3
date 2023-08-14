@@ -18,7 +18,14 @@ export const aboutMeApiSlice = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['AboutMe'],
 		}),
-
+		createAboutMe: builder.mutation({
+			query: (data) => ({
+				url: `${ABOUT_ME_URL}/${data.aboutMeId}`,
+				method: 'POST',
+				body: data,
+			}),
+			invalidatesTags: ['AboutMe'],
+		}),
 		deleteAboutMe: builder.mutation({
 			query: (aboutMeId) => ({
 				url: `${ABOUT_ME_URL}/${aboutMeId}`,
@@ -33,4 +40,5 @@ export const {
 	useGetAboutMeQuery,
 	useUpdateAboutMeMutation,
 	useDeleteAboutMeMutation,
+	useCreateAboutMeMutation,
 } = aboutMeApiSlice;

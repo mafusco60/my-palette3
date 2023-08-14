@@ -1,8 +1,9 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import About from '../components/About';
+import About from '../components/AboutMe';
 import { useGetAboutMeQuery } from '../slices/aboutMeApiSlice';
-const AboutScreen = () => {
+
+const AboutMeScreen = () => {
 	console.log('AboutScreen');
 	return (
 		<>
@@ -27,4 +28,4 @@ const AboutScreen = () => {
 	);
 };
 
-export default AboutScreen;
+export default AboutMeScreen;

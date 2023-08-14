@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import About from '../components/About';
-
+import { useGetAboutMeQuery } from '../slices/aboutMeApiSlice';
 const AboutScreen = () => {
 	console.log('AboutScreen');
 	return (

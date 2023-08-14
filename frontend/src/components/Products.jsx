@@ -4,28 +4,23 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Loader from './Loader';
 import Message from './Message';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
-	//const { pageNumber, keyword } = useParams()
-	try {
-		console.log('Products Component');
-	} catch (error) {
-		console.log('error Products Component');
-	}
-	const { data: products, isLoading, error } = useGetProductsQuery();
+	const { pageNumber, keyword } = useParams();
 
-	console.log('data- Products for GalleryScreen', products);
+	const { data: products, isLoading, error } = useGetProductsQuery();
 
 	return (
 		<>
 			{isLoading ? (
 				<Loader />
 			) : error ? (
-				<div>{error?.data?.message || error.error}</div>
+				<Message variant='danger'>
+					{error?.data?.message || error.error}
+				</Message>
 			) : (
 				products.map((product) => (
-					// <Container className='gallery-container'>
-
 					<Card className='gallery-card' key={product._id}>
 						<>
 							<LinkContainer to={`/products/${product._id}`}>
@@ -47,7 +42,6 @@ const Products = () => {
 							</Card.Body>
 						</>
 					</Card>
-					// </Container>
 				))
 			)}
 		</>

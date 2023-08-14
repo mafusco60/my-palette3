@@ -4,6 +4,8 @@ import faqs from './data/faqs.js';
 import colors from 'colors';
 import users from './data/users.js';
 import products from './data/products.js';
+import aboutMe from './data/aboutMe.js';
+import AboutMe from './models/aboutMeModel.js';
 import User from './models/userModel.js';
 import Product from './models/productModel.js';
 import Order from './models/orderModel.js';
@@ -20,7 +22,7 @@ const importData = async () => {
 		await Product.deleteMany();
 		await User.deleteMany();
 		await FAQs.deleteMany();
-
+		await AboutMe.deleteMany();
 		const createdUsers = await User.insertMany(users);
 
 		const adminUser = createdUsers[0]._id;
@@ -30,12 +32,15 @@ const importData = async () => {
 		});
 
 		const sampleFAQs = faqs.map((faq) => {
-			return { ...faq };
+			return { ...faq, user: adminUser };
 		});
 
+		const sampleAboutMe = aboutMe.map((aboutMe) => {
+			return { ...aboutMe, user: adminUser };
+		});
 		await Product.insertMany(sampleProducts);
-		await FAQ.insertMany(sampleFAQs);
-
+		await FAQs.insertMany(sampleFAQs);
+		await AboutMe.insertMany(sampleAboutMe);
 		console.log('Data Imported!'.green.inverse);
 		process.exit();
 	} catch (error) {
@@ -48,7 +53,8 @@ const destroyData = async () => {
 		await Order.deleteMany();
 		await Product.deleteMany();
 		await User.deleteMany();
-		await FAQ.deleteMany();
+		await FAQs.deleteMany();
+		await AboutMe.deleteMany();
 
 		console.log('Data Destroyed!'.red.inverse);
 		process.exit();

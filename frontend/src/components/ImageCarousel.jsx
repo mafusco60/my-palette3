@@ -1,28 +1,29 @@
-import { Link } from 'react-router-dom'
-import { Carousel, Image } from 'react-bootstrap'
-import { useGetProductsQuery } from '../slices/productsApiSlice'
-import Loader from './Loader'
-import Message from './Message'
+import { Link } from 'react-router-dom';
+import { Carousel, Image } from 'react-bootstrap';
+import { useGetProductsQuery } from '../slices/productsApiSlice';
+import Loader from './Loader';
+import Message from './Message';
 
 const ImageCarousel = () => {
-	console.log('ImageCarousel')
-	const { data: products, isLoading, error } = useGetProductsQuery()
+	console.log('ImageCarousel');
+	const { data: products, isLoading, error } = useGetProductsQuery();
 
 	return (
 		<>
 			{isLoading ? (
 				<Loader />
 			) : error ? (
-				<div>{error?.data?.message || error.error}</div>
+				<Message variant='danger'>
+					{error?.data?.message || error.error}
+				</Message>
 			) : (
 				<>
 					<>
 						<Carousel
-							pause='hover'
 							fade='true'
 							indicators='true'
 							controls='true'
-							className={'carousel-container carousel-fade'}
+							className={'carousel-container'}
 						>
 							{products.map((product) => (
 								<Carousel.Item key={product._id}>
@@ -44,7 +45,7 @@ const ImageCarousel = () => {
 				</>
 			)}
 		</>
-	)
-}
+	);
+};
 
-export default ImageCarousel
+export default ImageCarousel;

@@ -21,6 +21,7 @@ import FAQScreen from './screens/FAQScreen';
 import UserListScreen from './screens/admin/UserListScreen.jsx';
 import UserEditScreen from './screens/admin/UserEditScreen.jsx';
 import AboutScreen from './screens/AboutScreen';
+import AboutMeEditScreen from './screens/admin/AboutMeEditScreen.jsx';
 import ServicesScreen from './screens/ServicesScreen';
 
 import { createRoutesFromElements } from 'react-router-dom';
@@ -42,7 +43,8 @@ const router = createBrowserRouter(
 			<Route path='/contact/' element={<ContactScreen />} />
 			<Route path='/products/:id' element={<ProductScreen />} />
 			<Route path='/admin/userlist/' element={<UserListScreen />} />
-			<Route path='/admin/users/:id/edit' element={<UserEditScreen />} />}
+			<Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
+			<Route path='/admin/about/edit' element={<AboutMeEditScreen />} />
 		</Route>
 	)
 );

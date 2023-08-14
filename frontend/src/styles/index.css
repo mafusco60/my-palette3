@@ -233,9 +233,9 @@
 /*******Single Product / Shopping Cart ************************************/
 .closerX {
 	position: relative;
-	top: 10px;
+	top: 100px;
 	right: 10px;
-	color: var(--darkText);
+	color: black;
 	text-align: right;
 	margin: 15px;
 	font-size: 30px;

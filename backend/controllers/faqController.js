@@ -1,4 +1,3 @@
-import { request } from 'express';
 import asyncHandler from '../middleware/asyncHandler.js';
 import FAQs from '../models/faqsModel.js';
 

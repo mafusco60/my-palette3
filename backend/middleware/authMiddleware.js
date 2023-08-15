@@ -12,7 +12,8 @@ const protect = asyncHandler(async (req, res, next) => {
 	if (token) {
 		try {
 			const decoded = jwt.verify(token, process.env.JWT_SECRET);
-			req.user = await User.findById(decoded.userId).select('-password'); //-password
+			req.user = await User.findById(decoded.userId).select('-password');
+			console.log('User from token', req.user); //-password
 			next();
 		} catch (err) {
 			console.error(err);
@@ -28,6 +29,7 @@ const protect = asyncHandler(async (req, res, next) => {
 //Admin middleware
 const admin = (req, res, next) => {
 	if (req.user && req.user.isAdmin) {
+		console.log('isAdmin', req.user.isAdmin);
 		next();
 	} else {
 		res.status(401);

@@ -72,7 +72,7 @@ const UserListScreen = () => {
 									{!user.isAdmin && (
 										<>
 											<LinkContainer
-												to={`../admin/users/${user._id}/edit`}
+												to={`../users/${user._id}/edit`}
 												style={{ marginRight: '10px' }}
 											>
 												<Button variant='light' className='btn-sm'>

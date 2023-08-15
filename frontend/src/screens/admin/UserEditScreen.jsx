@@ -35,7 +35,7 @@ const UserEditScreen = () => {
 			await updateUser({ userId, lastName, firstName, emailSignIn, isAdmin });
 			toast.success('user updated successfully');
 			refetch();
-			navigate('/admin/userlist');
+			navigate('/userlist');
 		} catch (err) {
 			toast.error(err?.data?.message || err.error);
 		}
@@ -53,7 +53,7 @@ const UserEditScreen = () => {
 
 	return (
 		<>
-			<Link to='/admin/userlist' className='btn btn-light my-3'>
+			<Link to='/userlist' className='btn btn-light my-3'>
 				Go Back
 			</Link>
 			<FormContainer>

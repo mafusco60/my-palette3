@@ -41,7 +41,7 @@ const router = createBrowserRouter(
 			<Route path='/services/' element={<ServicesScreen />} />
 			<Route path='/contact/' element={<ContactScreen />} />
 			<Route path='/products/:id' element={<ProductScreen />} />
-			<Route path='/admin/userlist/' element={<UserListScreen />} />
+			<Route path='/userlist/' element={<UserListScreen />} />
 			<Route path='/users/:id/edit' element={<UserEditScreen />} />
 			<Route path='/aboutme/edit' element={<AboutMeEditScreen />} />
 		</Route>

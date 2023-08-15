@@ -1,0 +1,15 @@
+# Query: admin/
+# Flags: WordMatch RegExp
+
+5 results - 3 files
+
+frontend\src\index.js:
+  20: import UserListScreen from './screens/admin/UserListScreen.jsx';
+  21: import UserEditScreen from './screens/admin/UserEditScreen.jsx';
+  23: import AboutMeEditScreen from './screens/admin/AboutMeEditScreen.jsx';
+
+frontend\src\components\Paginate.jsx:
+  16: 								: `/productlist/${x + 1}`
+
+frontend\src\screens\admin\UserListScreen.jsx:
+  75: 												to={`../admin/users/${user._id}/edit`}

@@ -17,7 +17,7 @@ const Navigation = () => {
 					<Link to='/faqs' className='nav-header-footer'>
 						FAQ's
 					</Link>
-					<Link to='/about' className='nav-header-footer'>
+					<Link to='/aboutme' className='nav-header-footer'>
 						About
 					</Link>
 					<Link to='/services' className='nav-header-footer'>

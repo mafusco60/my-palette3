@@ -1,12 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from 'react-dom/client';
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import store from './store.js';
 import reportWebVitals from './reportWebVitals';
-//import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import './styles/bootstrap.custom.css';
 import './styles/index.css';
 import App from './App';
@@ -43,13 +42,13 @@ const router = createBrowserRouter(
 			<Route path='/contact/' element={<ContactScreen />} />
 			<Route path='/products/:id' element={<ProductScreen />} />
 			<Route path='/admin/userlist/' element={<UserListScreen />} />
-			<Route path='/user/:id/edit' element={<UserEditScreen />} />
+			<Route path='/users/:id/edit' element={<UserEditScreen />} />
 			<Route path='/aboutme/edit' element={<AboutMeEditScreen />} />
 		</Route>
 	)
 );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
 		<HelmetProvider>

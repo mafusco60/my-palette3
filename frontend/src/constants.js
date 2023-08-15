@@ -4,4 +4,4 @@ export const USERS_URL = '/api/users';
 export const ORDERS_URL = '/api/orders';
 export const PAYPAL_URL = '/api/config/paypal';
 export const FAQs_URL = '/api/faqs';
-export const ABOUT_ME_URL = '/api/about';
+export const ABOUT_ME_URL = '/api/aboutme';

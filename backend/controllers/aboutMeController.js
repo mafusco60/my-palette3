@@ -27,23 +27,20 @@ const createAboutMe = asyncHandler(async (req, res) => {
 // @route   PUT /api/aboutMe/
 // @access  Private / Admin
 
+const updateAboutMe = asyncHandler(async (req, res) => {
+	const { _id, number } = req.body;
 
-		const updateAboutMe = asyncHandler(async (req, res) => {
-			const { _id, number } = req.body;
+	const aboutMe = await AboutMe.findById(req.params.id);
 
-			const aboutMe = await AboutMe.findById(req.params.id);
+	if (aboutMe) {
+		aboutMe.number = number;
+		aboutMe.paragraph = paragraph;
 
-			if (aboutMe) {
-				aboutMe.number = number;
-				aboutMe.paragraph = paragraph;
-
-				const updatedAboutMe = await aboutMe.save();
-				res.json(updatedAboutMe);
-			} else {
-				res.status(404);
-				throw new Error('AboutMe not found');
-			}
-		});
+		const updatedAboutMe = await aboutMe.save();
+		res.json(updatedAboutMe);
+	} else {
+		res.status(404);
+		throw new Error('AboutMe not found');
 	}
 });
 
@@ -61,4 +58,5 @@ const deleteAboutMe = asyncHandler(async (req, res) => {
 		throw new Error('Paragraph not found');
 	}
 });
+
 export { createAboutMe, updateAboutMe, deleteAboutMe, getAboutMe };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import About from '../components/AboutMe';
+import AboutMe from '../components/AboutMe';
 import { useGetAboutMeQuery } from '../slices/aboutMeApiSlice';
 
 const AboutMeScreen = () => {
@@ -17,10 +17,9 @@ const AboutMeScreen = () => {
 						src='images/self.jpg'
 						alt='Mary Anne Fusco'
 						className='selfie'
-					/>
-
+						/>
 					<Card.Text className='desc-dk-txt-alt-about'>
-						<About />
+						<AboutMe />
 					</Card.Text>
 				</Card.Body>
 			</Card>

@@ -361,7 +361,7 @@
 	border-radius: 10px;
 	object-fit: cover;
 }
-
+/***********************About Me*********************************/
 .custom-card-about {
 	border-radius: 20px;
 	margin-top: 75px;
@@ -404,9 +404,9 @@
 .desc-dk-txt-alt-about {
 	font-family: var(--mainFont);
 	color: var(--darkTextAlt);
-	font-size: 20px;
-	margin-left: 50px;
-	margin-top: 50px;
+	font-size: 15px;
+	margin-left: 0;
+	margin-top: 20px;
 }
 .desc-xdk-txt {
 	font-family: var(--mainFont);

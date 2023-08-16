@@ -42,11 +42,11 @@ const LoginScreen = () => {
 
 	return (
 		<FormContainer>
-			<h1>Sign In</h1>
+			<h1 className='screen-title '>Sign In</h1>
 
 			<Form onSubmit={submitHandler}>
 				<Form.Group className='my-3' controlId='email'>
-					<Form.Label>Email Address</Form.Label>
+					<Form.Label className='text-dk-alt'>Email Address</Form.Label>
 					<Form.Control
 						type='email'
 						placeholder='Enter email'
@@ -56,7 +56,7 @@ const LoginScreen = () => {
 				</Form.Group>
 
 				<Form.Group className='my-2' controlId='password'>
-					<Form.Label>Password</Form.Label>
+					<Form.Label className='text-dk-alt'>Password</Form.Label>
 					<Form.Control
 						type='password'
 						placeholder='Enter password'
@@ -78,7 +78,7 @@ const LoginScreen = () => {
 			</Form>
 
 			<Row className='py-3'>
-				<Col>
+				<Col className='text-dk-alt'>
 					New Customer? {'  '}
 					<Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
 						Register

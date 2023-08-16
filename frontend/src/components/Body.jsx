@@ -13,10 +13,13 @@ const Body = () => {
 				{`
           body {
             background: linear-gradient(
-              to bottom,
-              var(--mainBackgroundTop),
-              var(--mainBackgroundMiddle),
-              var(--mainBackgroundBottom)
+							to bottom,
+							var(--mainBackgroundTop),
+							var(--mainBackgroundMiddle),
+							var(--mainBackgroundMiddle),
+              var(--mainBackgroundBottom),
+							var(--mainBackgroundBottom),
+							var(--mainBackgroundTop)
             );
             margin: 0; /* : Remove default body margin */
             padding: 0; /* : Remove default body padding */

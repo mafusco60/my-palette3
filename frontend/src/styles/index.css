@@ -8,11 +8,11 @@
 :root {
 	--lightestBackground: #e8eef3;
 	/*--lightBackground: #9BAEBF;*/
-	--lightBackground: transparent;
+	--lightBackground: #e3d3d4;
 	--darkBackground: darkred;
 	--mainBackgroundBottom: #dfd6d0;
-	--mainBackgroundMiddle: #c4a984;
-	--mainBackgroundTop: #af9572;
+	--mainBackgroundMiddle: #fcf8f8;
+	--mainBackgroundTop: rgb(157, 79, 79);
 
 	--lightGradient: #9baebf;
 	--lightestGradient: aliceblue;
@@ -56,19 +56,17 @@
 .bg-grad {
 	background: linear-gradient(
 		to bottom,
-		var(--mainBackgroundTop),
+
 		var(--mainBackgroundMiddle),
-		var(--mainBackgroundBottom)
+		var(--mainBackgroundBottom),
+		var(--mainBackgroundTop)
 	);
 }
 
-.bg-gold-lt {
-	background: var(--mainBackgroundBottom);
-}
 /* Header ************************************/
 
 .header-lt-bg {
-	background: var(--mainBackgroundBottom);
+	background: var(--mainBackgroundMiddle);
 }
 .header-dk-bg {
 	background: var(--darkBackground);
@@ -83,7 +81,7 @@
 .logo-header {
 	font-family: var(--fancyFont);
 	color: var(--darkText);
-	background-color: var(--mainBackgroundBottom);
+	background-color: transparent;
 	font-size: 50px;
 	font-style: oblique;
 	font-weight: 500;
@@ -364,9 +362,9 @@
 /***********************About Me*********************************/
 .custom-card-about {
 	border-radius: 20px;
-	margin-top: 75px;
-	margin-left: -10px;
+	margin: 75px auto;
 	text-align: left;
+	max-width: 1000px;
 	padding: 50px 100px 100px 100px;
 	background-color: var(--mainBackgroundBottom);
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
@@ -383,6 +381,7 @@
 	height: 350px; /* Set the exact height of the images */
 	border-radius: 10px;
 	margin: 0 auto;
+	padding-bottom: 20px;
 	object-fit: cover;
 }
 .text-wrap-container {
@@ -650,7 +649,7 @@ input[type='text'] {
 .logo-footer {
 	font-family: var(--fancyFont);
 	color: var(--darkText);
-	font-size: 20px;
+	font-size: 30px;
 	/* font-style: oblique; */
 	/* font-weight: 1000; */
 	text-align: center;

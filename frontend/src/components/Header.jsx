@@ -39,7 +39,7 @@ const Header = () => {
 
 	return (
 		<header>
-			<Navbar className='bg-gold-lt' expand='md' collapseOnSelect>
+			<Navbar className='header-lt-bg' expand='lg' collapseOnSelect>
 				<Container>
 					<LinkContainer to='/'>
 						<Navbar.Brand className='logo-header'>

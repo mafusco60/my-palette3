@@ -8,7 +8,7 @@ const Body = () => {
 	}
 	return (
 		<>
-			{/* Set the gold background for the body */}
+			{/* Set the reddish beige background for the body */}
 			<style>
 				{`
           body {
@@ -21,8 +21,8 @@ const Body = () => {
 							var(--mainBackgroundBottom),
 							var(--mainBackgroundTop)
             );
-            margin: 0; /* : Remove default body margin */
-            padding: 0; /* : Remove default body padding */
+            margin: 0;  
+            padding: 0; 
           }
                `}
 			</style>

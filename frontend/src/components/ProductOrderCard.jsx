@@ -7,14 +7,16 @@ import {
 	Form,
 	Button,
 } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import { addToCart } from '../slices/cartSlice';
 import { useDispatch } from 'react-redux';
 
+
 const ProductOrderCard = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { id: productId } = useParams();
 	const {
 		data: product,
@@ -27,7 +29,7 @@ const ProductOrderCard = () => {
 
 	const addToCartHandler = () => {
 		dispatch(addToCart({ ...product, qty }));
-		// navigate('/cart');
+		navigate('/cart');
 	};
 
 	return (

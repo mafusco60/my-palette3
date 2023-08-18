@@ -60,7 +60,7 @@ const productSchema = new mongoose.Schema(
 		category: {
 			type: String,
 			required: false,
-			default: 'Original Artwork',
+			default: 'Portrait',
 		},
 		print: {
 			type: Boolean,
@@ -92,6 +92,7 @@ const productSchema = new mongoose.Schema(
 			required: false,
 			default: 1,
 		},
+
 		buzzWords: {
 			type: String,
 			required: false,

@@ -229,15 +229,8 @@
 } */
 
 /*******Single Product / Shopping Cart ************************************/
-.closerX {
-	position: relative;
-	top: 100px;
-	right: 10px;
-	color: black;
-	text-align: right;
-	margin: 15px;
-	font-size: 30px;
-}
+
+
 
 .single-product-card {
 	width: 1000px;
@@ -262,7 +255,7 @@
 	width: 150px;
 	height: 200px;
 	border-radius: 10px;
-	margin: 20px;
+	/* margin: 20px; */
 	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
 }
 .image-med {
@@ -278,6 +271,23 @@
 	min-height: 550px;
 	border-radius: 10px;
 	margin: 20px;
+	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+}
+.image-land-tiny {
+	/* position: relative;
+	top: 30px; */
+	min-width: 400px;
+	max-width: 500px;
+	/* min-height: 550px; */
+	border-radius: 10px;
+	margin: 40px;
+	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+}
+.image-land-small {
+	/* width: 240px; */
+	height: 200px;
+	border-radius: 10px;
+	/* margin: 40px; */
 	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
 }
 .image-land-med {
@@ -320,6 +330,13 @@
 .reappear {
 	display: block;
 }
+
+.truncate-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 
 /***************************************/
 .card-portrait {

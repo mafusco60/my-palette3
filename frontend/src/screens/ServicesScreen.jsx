@@ -26,7 +26,7 @@ const ServicesScreen = () => {
 		<Card.Title className='text-dk'>Pets</Card.Title>
 		<Card.Img className='image-small img-fluid' src='\images\Kitten.jpg' alt='kitten'/>
 		<Card.Text className=" ">Digital Painting</Card.Text>
-			<Card.Img className='image-small'  src='\images\raccoon.jpg' alt='raccoon'/>
+			<Card.Img className='image-small'  src='\images\cockatiel.jpg' alt='cockatiel'/>
 			<Card.Text className='truncate-text'>
 				Digital Painting
 			</Card.Text>

@@ -58,7 +58,7 @@
 		to bottom,
 
 		var(--mainBackgroundMiddle),
-		var(--mainBackgroundBottom),
+		var(-- lightBackground),
 		var(--mainBackgroundTop)
 	);
 }
@@ -136,7 +136,7 @@
 	height: 600px;
 	margin: 0 auto;
 	margin: 35px auto 20px auto;
-	background-color: var(--mainBackgroundBottom);
+	background-color: var(-- lightBackground);
 	border-radius: 10px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 	text-align: center;
@@ -188,7 +188,7 @@
 	height: 600px;
 	border-radius: 20px;
 	margin: 15px auto;
-	background-color: var(--mainBackgroundBottom);
+	background-color: var(-- lightBackground);
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 .gallery-card-image {
@@ -206,8 +206,8 @@
 }
 
 .gallery-card-text {
-	font-family: var(--mainFont);
-	color: var(--darkTextAlt);
+	/* font-family: var(--mainFont);
+	color: var(--darkTextAlt); */
 	font-size: 20px;
 	text-decoration: none;
 	text-align: center;
@@ -238,7 +238,7 @@
 	padding-bottom: 20px;
 	margin: 75px auto 10px;
 	padding-bottom: 50px;
-	background-color: var(--mainBackgroundBottom);
+	background-color: var(-- lightBackground);
 	border-radius: 10px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 	padding-top: 20px;
@@ -383,7 +383,7 @@
 	text-align: left;
 	max-width: 1000px;
 	padding: 50px 100px 100px 100px;
-	background-color: var(--mainBackgroundBottom);
+	background-color: var(-- lightBackground);
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -454,7 +454,7 @@
 /*******FAQs*****************************************/
 .faq-container {
 	/* max-width: 800px; */
-	background-color: var(--mainBackgroundBottom);
+	background-color: var(--lightBackground);
 	margin: 50px;
 	padding: 50px;
 	border-radius: 10px;

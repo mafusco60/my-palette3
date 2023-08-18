@@ -22,6 +22,10 @@ import UserEditScreen from './screens/admin/UserEditScreen.jsx';
 import AboutMeScreen from './screens/AboutMeScreen';
 import AboutMeEditScreen from './screens/admin/AboutMeEditScreen.jsx';
 import ServicesScreen from './screens/ServicesScreen';
+import ShippingScreen from './screens/ShippingScreen.jsx';	 
+import PaymentScreen from './screens/PaymentScreen.jsx';
+import PlaceOrderScreen from './screens/PlaceOrder.jsx';
+
 
 import { createRoutesFromElements } from 'react-router-dom';
 try {
@@ -44,6 +48,10 @@ const router = createBrowserRouter(
 			<Route path='/userlist/' element={<UserListScreen />} />
 			<Route path='/users/:id/edit' element={<UserEditScreen />} />
 			<Route path='/aboutme/edit' element={<AboutMeEditScreen />} />
+			<Route path='/shipping' element={<ShippingScreen />} />
+			<Route path='/payment' element={<PaymentScreen />} />
+			<Route path='/placeorder' element={<PlaceOrderScreen />} />
+
 		</Route>
 	)
 );

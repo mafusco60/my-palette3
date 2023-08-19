@@ -45,13 +45,6 @@ const UserScreen = () => {
 					password: userInfo.password,
 					secretHint: userInfo.secretHint,
 					cellPhoneNumber: userInfo.cellPhoneNumber,
-					defaultShippingAddress: userInfo.defaultShippingAddress,
-					fullName: userInfo.fullName,
-					address: userInfo.address,
-					city: userInfo.city,
-					state: userInfo.state,
-					zipCode: userInfo.zipCode,
-					country: userInfo.country,
 
 					isAdmin: userInfo.isAdmin,
 				}).unwrap();

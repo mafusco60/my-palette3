@@ -15,11 +15,7 @@ import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router
-	.route('/')
-	.post(registerUser)
-	.get(getUsers)
-	.get(protect, admin, getUserByEmail);
+router.route('/').post(registerUser).get(getUsers);
 router.post('/auth', authUser);
 router.post('/logout', logoutUser);
 router
@@ -31,5 +27,6 @@ router
 	.delete(protect, admin, deleteUser)
 	.get(protect, admin, getUserDetails)
 	.put(protect, admin, updateUser);
+router.route('/:emailSignIn').get(protect, admin, getUserByEmail);
 
 export default router;

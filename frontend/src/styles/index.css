@@ -230,8 +230,6 @@
 
 /*******Single Product / Shopping Cart ************************************/
 
-
-
 .single-product-card {
 	width: 1000px;
 	min-height: 650px;
@@ -249,21 +247,21 @@
 	height: 75px;
 	border-radius: 10px;
 	margin: 20px;
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down;
 }
 .image-small {
 	width: 150px;
 	height: 200px;
 	border-radius: 10px;
 	/* margin: 20px; */
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down; /* 
 }
 .image-med {
 	width: 400px;
 	height: 550px;
 	border-radius: 10px;
 	margin: 20px;
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down; 
 }
 
 .image-lg {
@@ -271,7 +269,7 @@
 	min-height: 550px;
 	border-radius: 10px;
 	margin: 20px;
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down; 
 }
 .image-land-tiny {
 	/* position: relative;
@@ -281,14 +279,14 @@
 	/* min-height: 550px; */
 	border-radius: 10px;
 	margin: 40px;
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down;
 }
 .image-land-small {
 	/* width: 240px; */
 	height: 200px;
 	border-radius: 10px;
 	/* margin: 40px; */
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down;
 }
 .image-land-med {
 	/* position: relative;
@@ -298,14 +296,14 @@
 	/* min-height: 550px; */
 	border-radius: 10px;
 	margin: 40px;
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down;
 }
 .image-land-lg {
 	min-width: 1000px;
 	min-height: 600px;
 	border-radius: 10px;
 	margin: 20px;
-	object-fit: cover; /* This ensures the image maintains its aspect ratio within the specified dimensions */
+	object-fit: scale-down;
 }
 .desc-rel-position {
 	margin-bottom: 50px;
@@ -332,11 +330,10 @@
 }
 
 .truncate-text {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
-
 
 /***************************************/
 .card-portrait {

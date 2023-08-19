@@ -35,14 +35,6 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: false,
 		},
-		defaultShippingAddress: {
-			fullName: { type: String, required: false },
-			address: { type: String, required: false },
-			city: { type: String, required: false },
-			state: { type: String },
-			postalCode: { type: String, required: false },
-			country: { type: String, required: false },
-		},
 
 		isAdmin: {
 			type: Boolean,

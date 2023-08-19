@@ -1,7 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
-import bcrypt from 'bcryptjs';
+
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
 // @access  Public
@@ -19,7 +19,7 @@ const authUser = asyncHandler(async (req, res) => {
 			firstName: user.firstName,
 			emailSignIn: user.emailSignIn,
 			password: user.password,
-			// emailSecondary: user.emailSecondary,
+			emailSecondary: user.emailSecondary,
 			isAdmin: user.isAdmin,
 		});
 	} else {
@@ -29,7 +29,8 @@ const authUser = asyncHandler(async (req, res) => {
 });
 // @desc    Find a user by email
 // @route   GET /api/users
-// @access  Public
+// @access  Private, Admin
+// doesn't work
 
 const getUserByEmail = asyncHandler(async (req, res) => {
 	const user = await findOne({ emailSignIn });
@@ -54,13 +55,6 @@ const registerUser = asyncHandler(async (req, res) => {
 		emailSecondary,
 		secretHint,
 		cellPhoneNumber,
-		defaultShippingAddress,
-		fullName,
-		address,
-		city,
-		state,
-		postalCode,
-		country,
 	} = req.body;
 
 	const userExists = await User.findOne({ emailSignIn });
@@ -78,13 +72,6 @@ const registerUser = asyncHandler(async (req, res) => {
 		emailSecondary,
 		secretHint,
 		cellPhoneNumber,
-		defaultShippingAddress,
-		fullName,
-		address,
-		city,
-		state,
-		postalCode,
-		country,
 	});
 
 	if (user) {
@@ -96,6 +83,10 @@ const registerUser = asyncHandler(async (req, res) => {
 			lastName: user.lastName,
 			firstName: user.firstName,
 			emailSignIn: user.email,
+			emailSecondary,
+			secretHint,
+			cellPhoneNumber,
+
 			isAdmin: user.isAdmin,
 		});
 	} else {
@@ -130,13 +121,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
 			emailSecondary: user.emailSecondary,
 			secretHint: user.secretHint,
 			cellPhoneNumber: user.cellPhoneNumber,
-			defaultShippingAddress: user.defaultShippingAddress,
-			fullName: user.fullName,
-			address: user.address,
-			city: user.city,
-			state: user.state,
-			postalCode: user.postalCode,
-			country: user.country,
 
 			isAdmin: user.isAdmin,
 		});
@@ -170,13 +154,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 			emailSecondary: updatedUser.emailSecondary,
 			secretHint: updatedUser.secretHint,
 			cellPhoneNumber: updatedUser.cellPhoneNumber,
-			defaultShippingAddress: updatedUser.defaultShippingAddress,
-			fullName: updatedUser.fullName,
-			address: updatedUser.address,
-			city: updatedUser.city,
-			state: updatedUser.state,
-			postalCode: updatedUser.postalCode,
-			country: updatedUser.country,
+
 			isAdmin: updatedUser.isAdmin,
 		});
 	} else {
@@ -238,25 +216,6 @@ const updateUser = asyncHandler(async (req, res) => {
 		user.emailSecondary = req.body.emailSecondary || user.emailSecondary;
 		user.secretHint = req.body.secretHint || user.secretHint;
 		user.cellPhoneNumber = req.body.cellPhoneNumber || user.cellPhoneNumber;
-		user.defaultShippingAddress =
-			req.body.defaultShippingAddress || user.defaultShippingAddress;
-		user.defaultShippingAddress.fullName =
-			req.body.defaultShippingAddress.fullName ||
-			user.defaultShippingAddress.fullName;
-		user.defaultShippingAddress.address =
-			req.body.defaultShippingAddress.address ||
-			user.defaultShippingAddress.address;
-		user.defaultShippingAddress.city =
-			req.body.defaultShippingAddress.city || user.defaultShippingAddress.city;
-		user.defaultShippingAddress.state =
-			req.body.defaultShippingAddress.state ||
-			user.defaultShippingAddress.state;
-		user.defaultShippingAddress.postalCode =
-			req.body.defaultShippingAddress.postalCode ||
-			user.defaultShippingAddress.postalCode;
-		user.defaultShippingAddress.country =
-			req.body.defaultShippingAddress.country ||
-			user.defaultShippingAddress.country;
 
 		user.isAdmin = Boolean(req.body.isAdmin);
 
@@ -270,13 +229,6 @@ const updateUser = asyncHandler(async (req, res) => {
 			emailSecondary: updatedUser.emailSecondary,
 			secretHint: updatedUser.secretHint,
 			cellPhoneNumber: updatedUser.cellPhoneNumber,
-			defaultShippingAddress: updatedUser.defaultShippingAddress,
-			fullName: updatedUser.defaultShippingAddress.fullName,
-			address: updatedUser.defaultShippingAddress.address,
-			city: updatedUser.defaultShippingAddress.city,
-			state: updatedUser.defaultShippingAddress.state,
-			postalCode: updatedUser.defaultShippingAddress.postalCode,
-			country: updatedUser.defaultShippingAddress.country,
 
 			isAdmin: updatedUser.isAdmin,
 		});

@@ -14,18 +14,22 @@ import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
+import ProductListScreen from './screens/admin/ProductListScreen.jsx';
+import ProductEditScreen from './screens/admin/ProductEditScreen.jsx';
 import GalleryScreen from './screens/GalleryScreen';
 import ContactScreen from './screens/ContactScreen';
 import FAQScreen from './screens/FAQScreen';
+import FAQEditScreen from './screens/admin/FAQEditScreen.jsx';
 import UserListScreen from './screens/admin/UserListScreen.jsx';
 import UserEditScreen from './screens/admin/UserEditScreen.jsx';
 import AboutMeScreen from './screens/AboutMeScreen';
 import AboutMeEditScreen from './screens/admin/AboutMeEditScreen.jsx';
 import ServicesScreen from './screens/ServicesScreen';
-import ShippingScreen from './screens/ShippingScreen.jsx';	 
+import ShippingScreen from './screens/ShippingScreen.jsx';
 import PaymentScreen from './screens/PaymentScreen.jsx';
 import PlaceOrderScreen from './screens/PlaceOrder.jsx';
-
+import OrderListScreen from './screens/admin/OrderListScreen.jsx';
+import ProfileScreen from './screens/ProfileScreen.jsx';
 
 import { createRoutesFromElements } from 'react-router-dom';
 try {
@@ -41,17 +45,21 @@ const router = createBrowserRouter(
 			<Route path='/auth' element={<LoginScreen />} />
 			<Route path='/gallery' element={<GalleryScreen />} />
 			<Route path='/faqs/' element={<FAQScreen />} />
+			<Route path='/faqs/edit' element={<FAQEditScreen />} />
 			<Route path='/aboutme/' element={<AboutMeScreen />} />
+			<Route path='/aboutme/edit' element={<AboutMeEditScreen />} />
 			<Route path='/services/' element={<ServicesScreen />} />
 			<Route path='/contact/' element={<ContactScreen />} />
 			<Route path='/products/:id' element={<ProductScreen />} />
+			<Route path='/products/:id/edit' element={<ProductEditScreen />} />
+			<Route path='/productlist/' element={<ProductListScreen />} />
 			<Route path='/userlist/' element={<UserListScreen />} />
 			<Route path='/users/:id/edit' element={<UserEditScreen />} />
-			<Route path='/aboutme/edit' element={<AboutMeEditScreen />} />
+			<Route path='/users/:id/profile' element={<ProfileScreen />} />
+			<Route path='/orderlist/' element={<OrderListScreen />} />
 			<Route path='/shipping' element={<ShippingScreen />} />
 			<Route path='/payment' element={<PaymentScreen />} />
 			<Route path='/placeorder' element={<PlaceOrderScreen />} />
-
 		</Route>
 	)
 );

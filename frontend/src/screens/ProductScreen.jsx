@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { FaTimes, FaX } from 'react-icons/fa';
 
 const ProductScreen = () => {
 	const { id: productId } = useParams();
@@ -37,9 +36,7 @@ const ProductScreen = () => {
 								<h2 className='label-dk-txt single-product-title'>
 									{product.name}
 								</h2>
-								<FaTimes
-									className={!isEnlarged ? 'disappear' : 'reappear closerX'}
-								/>
+
 								<Card.Img
 									src={product.image}
 									alt={product.name}

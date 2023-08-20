@@ -14,10 +14,10 @@ const AboutMeEditScreen = () => {
 
 				<Card.Body className='text-wrap-container'>
 					<Card.Img
-						src='images/self.jpg'
+						src='/images/self.jpg'
 						alt='Mary Anne Fusco'
 						className='selfie'
-						/>
+					/>
 					<Card.Text className='desc-dk-txt-alt-about'>
 						<AboutMe />
 					</Card.Text>

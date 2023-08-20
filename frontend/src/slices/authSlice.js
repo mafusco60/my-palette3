@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import DynamicUpdater from '../components/DynamicUpdater';
 
 const initialState = {
 	userInfo: localStorage.getItem('userInfo')

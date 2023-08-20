@@ -14,7 +14,7 @@ import {
 } from '../controllers/productController.js';
 
 router.get('/top', getTopProducts);
-router.route('/').get(getProducts).post(protect, admin, createProduct);
+router.route('/').get(getProducts).post(createProduct);
 router.route('/:id/reviews').post(protect, checkObjectId, createProductReview);
 router
 	.route('/:id')

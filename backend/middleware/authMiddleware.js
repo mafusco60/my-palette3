@@ -5,10 +5,14 @@ import User from '../models/userModel.js';
 // Protect routes
 const protect = asyncHandler(async (req, res, next) => {
 	let token;
+	console.log('protect', protect);
 
 	//Read the JWT from the cookie
-	token = req.cookies.jwt;
-	console.log('token', token);
+	token = req.cookies.jwt; //PROBLEM HERE
+	console.log('token-auth-middleware', req.cookies.jwt); //undefined
+	console.log('req.cookies:', req.cookies); //null prototype
+	console.log('req.headers.cookie:', req.headers.cookie); //undefined
+
 	if (token) {
 		try {
 			const decoded = jwt.verify(token, process.env.JWT_SECRET);

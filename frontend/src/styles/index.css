@@ -228,7 +228,7 @@
 	justify-content: center;
 } */
 
-/*******Single Product / Shopping Cart ************************************/
+/*******Single Product / Shopping Cart /  Services************************************/
 
 .single-product-card {
 	width: 1000px;
@@ -242,20 +242,24 @@
 	padding-top: 20px;
 }
 
+.services-card {
+	height: 575px;
+	text-align: center;
+	margin-bottom: 50px;
+}
 .image-tiny {
 	width: 50px;
 	height: 75px;
 	border-radius: 10px;
-	margin: 20px;
 	object-fit: scale-down;
 }
 .image-small {
 	width: 150px;
 	height: 200px;
 	border-radius: 10px;
-	/* margin: 20px; */
-	object-fit: scale-down; /* 
+	object-fit: scale-down;
 }
+/*
 .image-med {
 	width: 400px;
 	height: 550px;
@@ -270,7 +274,7 @@
 	border-radius: 10px;
 	margin: 20px;
 	object-fit: scale-down; 
-}
+}*/
 .image-land-tiny {
 	/* position: relative;
 	top: 30px; */

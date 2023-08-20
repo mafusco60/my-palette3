@@ -9,9 +9,12 @@ const authUser = asyncHandler(async (req, res) => {
 	const { emailSignIn, password } = req.body;
 	console.log(emailSignIn, password);
 	const user = await User.findOne({ emailSignIn });
-
+	console.log('after findOne', emailSignIn, user);
 	if (user && (await user.matchPassword(password))) {
+		console.log('password match ok');
+
 		generateToken(res, user._id);
+		console.log('generate token-auth-middleware');
 
 		res.json({
 			_id: user._id,

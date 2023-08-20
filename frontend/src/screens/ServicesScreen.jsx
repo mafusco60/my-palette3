@@ -8,7 +8,7 @@ const ServicesScreen = () => {
 			<h2 className='screen-title'>Services</h2>;
 			<Row>
 				<Col sm={12} md={6} lg={3}>
-					<Card>
+					<Card className='services-card'>
 						<Card.Body>
 							<Card.Title className='text-dk'>Commissions: </Card.Title>
 							<Card.Text>
@@ -36,7 +36,7 @@ const ServicesScreen = () => {
 					</Card>
 				</Col>
 				<Col sm={12} md={6} lg={3}>
-					<Card className='ml-5'>
+					<Card className='services-card'>
 						<Card.Body>
 							<Card.Title className='text-dk'>Pets</Card.Title>
 							<Card.Img
@@ -55,7 +55,7 @@ const ServicesScreen = () => {
 					</Card>
 				</Col>
 				<Col sm={12} md={6} lg={3}>
-					<Card className=''>
+					<Card className='services-card'>
 						<Card.Body>
 							<Card.Title className='text-dk'>Portraits</Card.Title>
 							<Card.Img
@@ -79,7 +79,7 @@ const ServicesScreen = () => {
 				</Col>
 
 				<Col sm={12} md={6} lg={3}>
-					<Card>
+					<Card className='services-card'>
 						<Card.Body>
 							<Card.Title className='text-dk'>Special Events</Card.Title>
 							<Card.Img

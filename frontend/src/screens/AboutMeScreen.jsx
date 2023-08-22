@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import AboutMe from '../components/AboutMe';
-import { useGetAboutMeQuery } from '../slices/aboutMeApiSlice';
 
 const AboutMeScreen = () => {
 	console.log('AboutScreen');
@@ -9,7 +8,7 @@ const AboutMeScreen = () => {
 		<>
 			<h1 className='screen-title'>About The Artist</h1>
 
-			<Card className='custom-card-about'>
+			<Card className='card-aboutme'>
 				<Card.Img className='banner-image' src='/images/PainterPalette.jpeg' />
 
 				<Card.Body className='text-wrap-container'>
@@ -17,10 +16,9 @@ const AboutMeScreen = () => {
 						src='images/self.jpg'
 						alt='Mary Anne Fusco'
 						className='selfie'
-						/>
-					<Card.Text className='desc-dk-txt-alt-about'>
-						<AboutMe />
-					</Card.Text>
+					/>
+
+					<AboutMe />
 				</Card.Body>
 			</Card>
 		</>

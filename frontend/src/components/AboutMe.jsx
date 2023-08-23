@@ -5,8 +5,11 @@ import Message from './Message';
 
 const AboutMe = () => {
 	const { data: aboutMe, isLoading, error } = useGetAboutMeQuery();
-	console.log(aboutMe);
-
+	// console.log(aboutMe);
+	{
+		aboutMe ? console.log(aboutMe[0].paragraph) : console.log('no data');
+	}
+	// sortedArray = aboutMe.sort((a, b) => a.number - b.number);
 	return isLoading ? (
 		<Loader />
 	) : error ? (

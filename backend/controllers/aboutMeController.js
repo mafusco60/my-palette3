@@ -4,21 +4,14 @@ import AboutMe from '../models/aboutMeModel.js';
 const getAboutMe = asyncHandler(async (req, res) => {
 	const aboutMe = await AboutMe.find({});
 	if (aboutMe) {
+		aboutMe.sort((a, b) => (a.number > b.number ? 1 : -1));
 		res.status(201).json(aboutMe);
 	} else {
 		res.status(404);
 		throw new Error('Resource not found');
 	}
 });
-const getSortedAboutMe = asyncHandler(async (req, res) => {
-	const aboutMe = await AboutMe.find({}).sort({ number: 1 });
-	if (aboutMe) {
-		res.status(201).json(aboutMe);
-	} else {
-		res.status(404);
-		throw new Error('Resource not found');
-	}
-});
+
 const createAboutMe = asyncHandler(async (req, res) => {
 	const { number, paragraph } = req.body;
 	const aboutMe = await AboutMe.create({

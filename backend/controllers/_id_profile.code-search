@@ -1,0 +1,19 @@
+# Query: /:id/profile
+# ContextLines: 1
+
+3 results - 3 files
+
+backend/routes/userRoutes.js:
+  21  router
+  22: 	.route('/profile')
+  23  	.get(protect, getUserProfile)
+
+frontend/src/index.js:
+  59  			<Route path='' element={<PrivateRoute />}>
+  60: 				<Route path='/profile' element={<ProfileScreen />} />
+  61  				<Route path='/shipping' element={<ShippingScreen />} />
+
+frontend/src/components/Header.jsx:
+  73  									<NavDropdown title={userInfo.firstName} id='username'>
+  74: 										<LinkContainer to='/profile'>
+  75  											<NavDropdown.Item>Profile</NavDropdown.Item>

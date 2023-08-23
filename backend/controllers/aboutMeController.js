@@ -60,10 +60,4 @@ const deleteAboutMe = asyncHandler(async (req, res) => {
 	}
 });
 
-export {
-	createAboutMe,
-	getSortedAboutMe,
-	updateAboutMe,
-	deleteAboutMe,
-	getAboutMe,
-};
+export { createAboutMe, updateAboutMe, deleteAboutMe, getAboutMe };

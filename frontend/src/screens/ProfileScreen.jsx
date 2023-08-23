@@ -20,7 +20,7 @@ const ProfileScreen = () => {
 
 	const { userInfo } = useSelector((state) => state.auth);
 
-	const { data: orders, isLoading, error } = useGetMyOrdersQuery();
+	const { data: orders, isLoading, error } = useGetMyOrdersQuery(userInfo._id);
 
 	const [updateProfile, { isLoading: loadingUpdateProfile }] =
 		useProfileMutation();
@@ -29,7 +29,7 @@ const ProfileScreen = () => {
 		setFirstName(userInfo.firstName);
 		setLastName(userInfo.lastName);
 		setEmailSignIn(userInfo.emailSignIn);
-	}, [userInfo.email, userInfo.name]);
+	}, [userInfo.emailSignIn, userInfo.lastName, userInfo.firstName]);
 
 	const dispatch = useDispatch();
 	const submitHandler = async (e) => {
@@ -48,7 +48,9 @@ const ProfileScreen = () => {
 				dispatch(setCredentials({ ...res }));
 				toast.success('Profile updated successfully');
 			} catch (err) {
-				toast.error(err?.data?.message || err.error);
+				<Message variant='danger'>
+					{error?.data?.message || error.error}
+				</Message>;
 			}
 		}
 	};
@@ -59,6 +61,7 @@ const ProfileScreen = () => {
 				<h2>User Profile</h2>
 
 				<Form onSubmit={submitHandler}>
+					<p>User ID: {userInfo._id}</p>
 					<Form.Group className='my-2' controlId='firstname'>
 						<Form.Label>First Name</Form.Label>
 						<Form.Control

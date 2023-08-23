@@ -11,13 +11,6 @@ export const aboutMeApiSlice = apiSlice.injectEndpoints({
 			providesTags: ['AboutMe'],
 		}),
 
-		getSortedAboutMe: builder.query({
-			query: () => ({
-				url: `${ABOUT_ME_URL}/sort`,
-			}),
-			keepUnusedDataFor: 5,
-			providesTags: ['AboutMe'],
-		}),
 		updateAboutMe: builder.mutation({
 			query: (data) => ({
 				url: `${ABOUT_ME_URL}/${data.aboutMeId}`,
@@ -46,8 +39,6 @@ export const aboutMeApiSlice = apiSlice.injectEndpoints({
 
 export const {
 	useGetAboutMeQuery,
-	useGetSortedAboutMeQuery,
-
 	useUpdateAboutMeMutation,
 	useDeleteAboutMeMutation,
 	useCreateAboutMeMutation,

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import DynamicUpdater from '../components/DynamicUpdater';
 
 const initialState = {
 	userInfo: localStorage.getItem('userInfo')
@@ -14,7 +13,8 @@ const authSlice = createSlice({
 		setCredentials: (state, action) => {
 			state.userInfo = action.payload;
 			localStorage.setItem('userInfo', JSON.stringify(action.payload));
-
+			const temp = localStorage.getItem('userInfo');
+			console.log('temp', temp); //ok
 			const expirationTime = new Date().getTime() + 30 * 24 * 60 * 60 * 1000; // 30 days
 			localStorage.setItem('expirationTime', expirationTime);
 		},

@@ -27,17 +27,15 @@ const ProductScreen = () => {
 			{isLoading ? (
 				<Loader />
 			) : error ? (
-				<div>{error?.data?.message || error.error}</div>
+				<Message>{error?.data?.message || error.error}</Message>
 			) : (
 				<Card className='single-product-card'>
 					<Card.Body>
 						<Col>
 							<Row>
-								<h2 className='label-dk-txt single-product-title'>
-									{product.name}
-								</h2>
+								<h2>{product.name}</h2>
 
-								<Card.Img
+								<Image
 									src={product.image}
 									alt={product.name}
 									onClick={clickHandler}
@@ -57,15 +55,11 @@ const ProductScreen = () => {
 							<ProductOrderCard />
 						</Col>
 
-						<Card.Text
-							className={
-								!product.portrait
-									? 'desc-dk-txt-alt desc-rel-position'
-									: 'desc-dk-txt-alt'
-							}
+						<h4
+							className={!product.portrait ? 'single-product-description' : ''}
 						>
 							{product.description}
-						</Card.Text>
+						</h4>
 					</Card.Body>
 				</Card>
 			)}

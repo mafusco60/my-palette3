@@ -4,11 +4,11 @@ import User from '../models/userModel.js';
 
 // Protect routes
 const protect = asyncHandler(async (req, res, next) => {
-	// let token;
+	let token;
 	console.log('protect', protect);
 
 	//Read the JWT from the cookie
-	const token = req.cookies.jwt; //PROBLEM HERE
+	token = req.cookies.jwt; //PROBLEM HERE
 	console.log('token-auth-middleware', req.cookies.jwt); //undefined
 	console.log('req.cookies:', req.cookies); //null prototype
 	console.log('req.headers.cookie:', req.headers.cookie); //undefined

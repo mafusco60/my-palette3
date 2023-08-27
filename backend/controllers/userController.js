@@ -7,14 +7,19 @@ import User from '../models/userModel.js';
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
 	const { emailSignIn, password } = req.body;
-	console.log(emailSignIn, password);
+	console.log(emailSignIn, password); //ok
 	const user = await User.findOne({ emailSignIn });
-	console.log('after findOne', emailSignIn, user);
+	console.log('after findOne', emailSignIn, user); //ok
 	if (user && (await user.matchPassword(password))) {
-		console.log('password match ok');
+		console.log('password match ok'); //ok
 
 		generateToken(res, user._id);
-		console.log('generate token-auth-middleware');
+		const temp4 = req.cookies.jwt;
+		console.log(
+			'generate token-auth-middleware- user._id cookie, after generateToken',
+			user._id,
+			temp4
+		); //temp4 is undefined
 
 		res.json({
 			_id: user._id,
@@ -22,7 +27,6 @@ const authUser = asyncHandler(async (req, res) => {
 			firstName: user.firstName,
 			emailSignIn: user.emailSignIn,
 			password: user.password,
-			emailSecondary: user.emailSecondary,
 			isAdmin: user.isAdmin,
 		});
 	} else {
@@ -72,9 +76,6 @@ const registerUser = asyncHandler(async (req, res) => {
 		firstName,
 		emailSignIn,
 		password,
-		emailSecondary,
-		secretHint,
-		cellPhoneNumber,
 	});
 
 	if (user) {
@@ -102,6 +103,8 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/logout
 // @access  Public
 const logoutUser = (req, res) => {
+	const temp5 = req.cookies.jwt;
+	console.log('logoutUser', temp5); //undefined
 	res.cookie('jwt', '', {
 		httpOnly: true,
 		expires: new Date(0),

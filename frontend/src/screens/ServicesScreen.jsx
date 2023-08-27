@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ServicesScreen = () => {
 	return (
 		<>
-			<h2 className='screen-title'>Services</h2>;
+			<h2 className='screen-title'>Services</h2>
 			<Row>
 				<Col sm={12} md={6} lg={3}>
 					<Card className='services-card'>

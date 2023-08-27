@@ -4,10 +4,9 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
-
+import Message from '../components/Message';
 import { useRegisterMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
-import { toast } from 'react-toastify';
 
 const RegisterScreen = () => {
 	const [firstName, setFirstName] = useState('');
@@ -37,7 +36,7 @@ const RegisterScreen = () => {
 		e.preventDefault();
 
 		if (password !== confirmPassword) {
-			toast.error('Passwords do not match');
+			<Message variant='danger'>'Passwords do not match'</Message>;
 		} else {
 			try {
 				const res = await register({
@@ -49,7 +48,7 @@ const RegisterScreen = () => {
 				dispatch(setCredentials({ ...res }));
 				navigate(redirect);
 			} catch (err) {
-				toast.error(err?.data?.message || err.error);
+				<Message variant='danger'>{err}</Message>;
 			}
 		}
 	};
@@ -106,7 +105,7 @@ const RegisterScreen = () => {
 					></Form.Control>
 				</Form.Group>
 
-				<Button disabled={isLoading} type='submit' variant='primary'>
+				<Button type='submit' variant='primary'>
 					Register
 				</Button>
 

@@ -48,7 +48,7 @@ const PlaceOrderScreen = () => {
 			<CheckoutSteps step1 step2 step3 step4 />
 			<Row>
 				<Col md={8}>
-					<ListGroup variant='flush'>
+					<ListGroup variant='flush' className='margin-25'>
 						<ListGroup.Item>
 							<h2>Shipping</h2>
 							<p>
@@ -74,18 +74,19 @@ const PlaceOrderScreen = () => {
 									{cart.cartItems.map((item, index) => (
 										<ListGroup.Item key={index}>
 											<Row>
-												<Col md={1}>
+												<Col md={3}>
 													<Image
 														src={item.image}
 														alt={item.name}
-														fluid
-														rounded
+														className={
+															!item.portrait ? 'image-land-tiny' : 'image-tiny'
+														}
 													/>
 												</Col>
-												<Col>
+												<Col md={5}>
 													<Link to={`/products/${item._id}`}>{item.name}</Link>
 												</Col>
-												<Col md={4}>
+												<Col md={4} className='justify-r'>
 													{item.qty} x ${item.price} = ${item.qty * item.price}
 												</Col>
 											</Row>
@@ -98,32 +99,32 @@ const PlaceOrderScreen = () => {
 				</Col>
 				<Col md={4}>
 					<Card>
-						<ListGroup variant='flush'>
+						<ListGroup variant='flush' className='margin-25'>
 							<ListGroup.Item>
 								<h2>Order Summary</h2>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Items</Col>
-									<Col>${cart.itemsPrice}</Col>
+									<Col className='justify-r'>${cart.itemsPrice}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Shipping</Col>
-									<Col>${cart.shippingPrice}</Col>
+									<Col className='justify-r'>${cart.shippingPrice}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Tax</Col>
-									<Col>${cart.taxPrice}</Col>
+									<Col className='justify-r'>${cart.taxPrice}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Total</Col>
-									<Col>${cart.totalPrice}</Col>
+									<Col className='justify-r'>${cart.totalPrice}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>

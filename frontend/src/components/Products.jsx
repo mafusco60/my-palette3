@@ -38,7 +38,9 @@ const Products = () => {
 							<Card.Body className='gallery-card-text'>
 								<Card.Title className=''>{product.name}</Card.Title>
 								<Card.Text className=''>{product.medium}</Card.Text>
-								<Card.Text className=''>${product.price}</Card.Text>
+								<Card.Text>
+									{product.digital ? 'starting at ' : ''}${product.price}
+								</Card.Text>
 							</Card.Body>
 						</>
 					</Card>

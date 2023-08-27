@@ -9,6 +9,8 @@ const Footer = () => {
 	return (
 		<>
 			<footer>
+				<br />
+				<br />
 				<div className='nav-line'>
 					<Navigation className='nav-footer' />
 				</div>

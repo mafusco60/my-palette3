@@ -50,6 +50,9 @@
 .justify-r {
 	text-align: right;
 }
+.margin-25 {
+	margin: 25px;
+}
 
 /* Background Colors ********************************/
 
@@ -58,7 +61,7 @@
 		to bottom,
 
 		var(--mainBackgroundMiddle),
-		var(-- lightBackground),
+		var(--lightBackground),
 		var(--mainBackgroundTop)
 	);
 }
@@ -222,6 +225,7 @@
 	text-align: center;
 	padding-top: 50px;
 }
+
 /* .gallery-body {
 	display: flex;
 	flex-wrap: wrap;
@@ -241,6 +245,9 @@
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 	padding-top: 20px;
 }
+.single-product-description {
+	margin-top: 25px;
+}
 
 .services-card {
 	min-height: 575px;
@@ -248,8 +255,7 @@
 	margin-bottom: 50px;
 }
 .image-tiny {
-	width: 50px;
-	height: 75px;
+	width: 75px;
 	border-radius: 10px;
 	object-fit: scale-down;
 }
@@ -259,30 +265,26 @@
 	border-radius: 10px;
 	object-fit: scale-down;
 }
-/*
+
 .image-med {
 	width: 400px;
 	height: 550px;
 	border-radius: 10px;
 	margin: 20px;
-	object-fit: scale-down; 
+	object-fit: scale-down;
 }
 
-.image-lg {
-	min-width: 830px;
-	min-height: 550px;
+/* .image-lg {
+	
 	border-radius: 10px;
 	margin: 20px;
-	object-fit: scale-down; 
-}*/
+	object-fit: scale-down;
+} */
 .image-land-tiny {
 	/* position: relative;
 	top: 30px; */
-	min-width: 400px;
-	max-width: 500px;
-	/* min-height: 550px; */
+	height: 75px;
 	border-radius: 10px;
-	margin: 40px;
 	object-fit: scale-down;
 }
 .image-land-small {
@@ -302,20 +304,20 @@
 	margin: 40px;
 	object-fit: scale-down;
 }
-.image-land-lg {
-	min-width: 1000px;
-	min-height: 600px;
+/* .image-land-lg {
+	width: 900px;
+	margin: 0 auto;
 	border-radius: 10px;
 	margin: 20px;
 	object-fit: scale-down;
-}
+} */
 .desc-rel-position {
 	margin-bottom: 50px;
 	/* top: 30px; */
 }
-.single-product-title {
+/* .single-product-title {
 	margin: 50px auto;
-}
+} */
 .product-order-card {
 	display: block;
 	position: absolute;

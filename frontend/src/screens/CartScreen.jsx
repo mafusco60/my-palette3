@@ -12,7 +12,6 @@ import {
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
-import DynamicUpdater from '../components/DynamicUpdater';
 
 const CartScreen = () => {
 	const navigate = useNavigate();
@@ -35,14 +34,14 @@ const CartScreen = () => {
 
 	return (
 		<Row>
-			<Col md={12}>
+			<Col md={8}>
 				<h1 className='screen-title'>Shopping Cart</h1>
 				{cartItems.length === 0 ? (
 					<Message>
 						Your cart is empty <Link to='/gallery'> Go Shopping </Link>
 					</Message>
 				) : (
-					<ListGroup variant='flush'>
+					<ListGroup variant='flush' className='margin-25'>
 						{cartItems.map((item) => (
 							<ListGroup.Item key={item._id}>
 								<Row>
@@ -50,7 +49,11 @@ const CartScreen = () => {
 										<Image
 											src={item.image}
 											alt={item.name}
-											className='fluid image-tiny'
+											className={
+												!item.portrait
+													? 'fluid image-land-tiny'
+													: 'fluid image-tiny'
+											}
 										/>
 									</Col>
 									<Col md={3}>
@@ -89,30 +92,30 @@ const CartScreen = () => {
 			</Col>
 			{cartItems.length > 0 ? (
 				<Col md={4}>
-					<Card>
-						<ListGroup variant='flush'>
-							<ListGroup.Item>
-								<h2>
-									Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
-									) items
-								</h2>
-								$
-								{cartItems
-									.reduce((acc, item) => acc + item.qty * item.price, 0)
-									.toFixed(2)}
-							</ListGroup.Item>
-							<ListGroup.Item>
-								<Button
-									type='button'
-									className='btn-block'
-									disabled={cartItems.length === 0}
-									onClick={checkoutHandler}
-								>
-									Proceed To Checkout
-								</Button>
-							</ListGroup.Item>
-						</ListGroup>
-					</Card>
+					{/* <Card> */}
+					<ListGroup variant='flush' className='margin-25'>
+						<ListGroup.Item>
+							<h2>
+								Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+								items
+							</h2>
+							$
+							{cartItems
+								.reduce((acc, item) => acc + item.qty * item.price, 0)
+								.toFixed(2)}
+						</ListGroup.Item>
+						<ListGroup.Item>
+							<Button
+								type='button'
+								className='btn-block'
+								disabled={cartItems.length === 0}
+								onClick={checkoutHandler}
+							>
+								Proceed To Checkout
+							</Button>
+						</ListGroup.Item>
+					</ListGroup>
+					{/* </Card> */}
 				</Col>
 			) : (
 				''

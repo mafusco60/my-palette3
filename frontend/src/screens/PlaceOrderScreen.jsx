@@ -23,11 +23,14 @@ const PlaceOrderScreen = () => {
 			navigate('/payment');
 		}
 	}, [cart.paymentMethod, cart.shippingAddress.address, navigate]);
+	console.log('cart.user******', cart.user);
 
 	const dispatch = useDispatch();
 	const placeOrderHandler = async () => {
+		console.log('placeOrderHandler', cart.user);
 		try {
 			const res = await createOrder({
+				// user: cart.user,
 				orderItems: cart.cartItems,
 				shippingAddress: cart.shippingAddress,
 				paymentMethod: cart.paymentMethod,
@@ -36,10 +39,12 @@ const PlaceOrderScreen = () => {
 				taxPrice: cart.taxPrice,
 				totalPrice: cart.totalPrice,
 			}).unwrap();
+			console.log('res: ', res);
 			dispatch(clearCartItems());
-			navigate(`/order/${res._id}`);
-		} catch (err) {
-			toast.error(err);
+			navigate(`/order/:id`);
+		} catch (error) {
+			<Message variant='danger'>{error?.data?.message || error.error}</Message>;
+			console.log('error: ', error);
 		}
 	};
 

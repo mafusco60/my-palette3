@@ -133,6 +133,7 @@ import { verifyPayPalPayment, checkIfNewTransaction } from '../utils/paypal.js';
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
 	const { orderItems, shippingAddress, paymentMethod } = req.body;
+	console.log('addOrderItems-req.body', req.body); //ok
 
 	if (orderItems && orderItems.length === 0) {
 		res.status(400);
@@ -153,6 +154,10 @@ const addOrderItems = asyncHandler(async (req, res) => {
 			const matchingItemFromDB = itemsFromDB.find(
 				(itemFromDB) => itemFromDB._id.toString() === itemFromClient._id
 			);
+			console.log('matchingItemFromDB.price', matchingItemFromDB.price); //ok
+			console.log('itemFromClient', itemFromClient._id); //ok
+			console.log('*************order-req.user', req.user); //user undefined
+
 			return {
 				...itemFromClient,
 				product: itemFromClient._id,
@@ -167,7 +172,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
 		const order = new Order({
 			orderItems: dbOrderItems,
-			user: req.user._id,
+			user: req.user,
 			shippingAddress,
 			paymentMethod,
 			itemsPrice,
@@ -175,6 +180,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 			shippingPrice,
 			totalPrice,
 		});
+		console.log('*************order-req.user', req.user); //user undefined
 
 		const createdOrder = await order.save();
 
@@ -186,9 +192,9 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @route   GET /api/orders/myorders
 // @access  Private
 const getMyOrders = asyncHandler(async (req, res) => {
-	console.log('getMyOrders', req.user);
-	const orders = await Order.find({ user: req.user._id });
-	console.log(`userId: ${req.user._id}`);
+	console.log('getMyOrders');
+	const orders = await Order.find({ user: req.user });
+	console.log(`userId: ${req.user}`);
 	res.json(orders);
 	if (!orders) {
 		res.status(404);
